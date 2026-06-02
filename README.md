@@ -1,14 +1,14 @@
 ﻿<div align="center">
-  <img src="https://vibecord.ru/image.png" width="96" height="96" alt="VibeCord Logo">
+  <img src="https://raw.githubusercontent.com/root-0x/VibeCord/main/static/icon.png" width="96" height="96" alt="VibeCord Logo">
 
 # VibeCord
 
 **A custom Discord client built for people who actually care about how Discord runs.**
 
-[![Discord](https://img.shields.io/badge/Discord-Join%20us-5865F2?logo=discord\&logoColor=white)](https://discord.gg/vibecord)
-[![License](https://img.shields.io/badge/license-GPL%20v3-a855f7)](./LICENSE)
-[![Platform](https://img.shields.io/badge/platform-Windows-3b82f6.svg?logo=windows\&logoColor=white)](https://git.vibecord.ru/vibecord/vibecord)
-[![Website](https://img.shields.io/badge/website-vibecord.ru-5865F2?logo=googlechrome\&logoColor=white)](https://vibecord.ru)
+[![Discord](https://img.shields.io/badge/Discord-Join%20us-dc2626?logo=discord&logoColor=white)](https://discord.gg/vibecordfr)
+[![License](https://img.shields.io/badge/license-GPL%20v3-dc2626)](./LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Windows-dc2626.svg?logo=windows&logoColor=white)](https://github.com/root-0x/VibeCord)
+[![GitHub](https://img.shields.io/badge/GitHub-root--0x%2FVibeCord-dc2626?logo=github&logoColor=white)](https://github.com/root-0x/VibeCord)
 
 ---
 
@@ -30,9 +30,9 @@ VibeCord is a fork of Equicord, which itself builds on top of Vencord. We stripp
 
 ## Installation (Windows)
 
-1. Download **`vibecord-install.ps1`**
-2. Right-click → **Run with PowerShell**
-3. Follow the steps, restart Discord, done.
+1. Download the latest **`VibeCord-Installer.exe`** from [Releases](https://github.com/root-0x/VibeCord/releases/latest)
+2. Run it and follow the steps
+3. Restart Discord, done.
 
 ---
 
@@ -41,7 +41,7 @@ VibeCord is a fork of Equicord, which itself builds on top of Vencord. We stripp
 ### Requirements
 
 * Git
-* Node.js (LTS)
+* Node.js 18+
 * pnpm
 
 ```bash
@@ -51,10 +51,11 @@ npm install -g pnpm
 ### Clone & Build
 
 ```bash
-git clone https://git.vibecord.ru/vibecord/vibecord.git
-cd vibecord
+git clone https://github.com/root-0x/VibeCord.git
+cd VibeCord
 pnpm install
-pnpm build
+pnpm buildDesktop
+pnpm buildStandalone
 ```
 
 ### Inject into Discord
@@ -71,17 +72,35 @@ pnpm uninject
 
 ---
 
+## Releasing an update
+
+1. Build the dist files:
+```bash
+pnpm buildDesktop
+pnpm buildStandalone
+```
+
+2. Zip the contents of `dist/desktop/` into `vibecord-dist.zip`
+
+3. Create a new GitHub release:
+   - Go to [Releases](https://github.com/root-0x/VibeCord/releases/new)
+   - Tag: `vX.X.X`
+   - Upload `vibecord-dist.zip` as an asset
+   - Publish
+
+The installer and auto-updater will automatically pick up the new release.
+
+---
+
 ## Repository
 
-Source code:
-
-https://git.vibecord.ru/vibecord/vibecord
+Source code: https://github.com/root-0x/VibeCord
 
 ---
 
 ## Credits
 
-VibeCord wouldn't exist without [Equicord](https://github.com/Equicord/Equicord) and [Vencord](https://github.com/Vendicated/Vencord). A huge chunk of what makes this work comes directly from their projects. We're fully aware of that and genuinely appreciate everything they've built — we're just taking it in a different direction. Big thanks to everyone who's contributed to both.
+VibeCord wouldn't exist without [Equicord](https://github.com/Equicord/Equicord) and [Vencord](https://github.com/Vendicated/Vencord). A huge chunk of what makes this work comes directly from their projects. We're fully aware of that and genuinely appreciate everything they've built — we're just taking it in a different direction.
 
 ---
 
