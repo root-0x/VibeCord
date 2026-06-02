@@ -1,7 +1,7 @@
 ﻿import {log} from "./log";
 import {action, status} from "../../stores/installation";
 
-const discordURL = "https://discord.gg/vibecord";
+const discordURL = "https://discord.gg/vibecordfr";
 
 export default function fail() {
     log("");

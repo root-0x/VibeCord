@@ -2,20 +2,22 @@
     import {remote} from "electron";
     import quit from "../actions/quit";
     import {onMount} from "svelte";
+    import getStatic from "../getstatic.js";
 
     export let macButtons;
 
     const pkgVersion = remote.app.getVersion();
     let displayVersion = pkgVersion;
+    const logoSrc = getStatic("logo.png");
 
     onMount(() => {
         const https = require("https");
         const options = {
-            hostname: "git.nightcord.ru",
-            path: "/api/v1/repos/nightcord/nightcord/releases/latest",
+            hostname: "api.github.com",
+            path: "/repos/root-0x/VibeCord/releases/latest",
             method: "GET",
             rejectUnauthorized: false,
-            headers: {"User-Agent": "nightcord-installer"}
+            headers: {"User-Agent": "vibecord-installer"}
         };
 
         const req = https.request(options, (res) => {
@@ -41,7 +43,8 @@
 </script>
 
 <header class="titlebar {macButtons === true ? "type-mac" : "type-standard"}">
-    <span class="title">Nightcord Installer v{displayVersion}</span>
+    <img src={logoSrc} alt="VibeCord" class="logo" />
+    <span class="title">VibeCord Installer v{displayVersion}</span>
     <div class="window-controls">
         {#if macButtons === true}
             <button tabindex="-1" on:click={quit} id="close">
@@ -78,6 +81,14 @@
         display: flex;
         align-items: center;
         -webkit-app-region: drag;
+    }
+
+    .logo {
+        width: 20px;
+        height: 20px;
+        margin-left: 8px;
+        object-fit: contain;
+        flex-shrink: 0;
     }
 
     .wordmark {

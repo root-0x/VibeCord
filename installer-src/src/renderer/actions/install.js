@@ -18,7 +18,7 @@ const INJECT_SHIM_PROGRESS = 98;
 const RESTART_DISCORD_PROGRESS = 100;
 
 
-const RELEASE_API = `https://git.${domain}/api/v1/repos/vibecord/vibecord/releases/latest`;
+const RELEASE_API = `https://api.github.com/repos/root-0x/VibeCord/releases/latest`;
 const DIST_ZIP = "vibecord-dist.zip";
 const distDir = path.join(process.env.LOCALAPPDATA, "VibeCord", "dist");
 

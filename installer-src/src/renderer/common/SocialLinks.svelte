@@ -1,9 +1,9 @@
 <script>
     import {tooltip} from "./tooltip";
     
-    const discordUrl = "https://discord.gg/nightcord";
-    const giteaUrl = "https://git.nightcord.ru/nightcord/nightcord";
-    const webUrl = "https://nightcord.ru";
+    const discordUrl = "https://discord.gg/vibecordfr";
+    const giteaUrl = "https://github.com/root-0x/VibeCord";
+    const webUrl = "https://github.com/root-0x/VibeCord";
 </script>
 
 <div class="social-links">
@@ -14,10 +14,10 @@
         </svg>
     </a>
 
-    <!-- Gitea -->
-    <a use:tooltip={{text: "Gitea"}} aria-label="Gitea" class="social" id="gitea" target="_blank" href={giteaUrl}>
-        <svg tabindex="-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-            <path d="M5.583 7.229c-2.464-0.005-5.755 1.557-5.573 5.479 0.281 6.125 6.557 6.693 9.068 6.745 0.271 1.146 3.224 5.109 5.411 5.318h9.573c5.74-0.38 10.036-17.365 6.854-17.427-5.271 0.25-8.396 0.375-11.073 0.396v5.297l-0.839-0.365-0.005-4.932c-3.073 0-5.781-0.141-10.917-0.396-0.646-0.005-1.542-0.115-2.5-0.115zM5.927 9.396h0.297c0.349 3.141 0.917 4.974 2.068 7.781-2.938-0.349-5.432-1.198-5.891-4.38-0.24-1.646 0.563-3.365 3.526-3.401z"/>
+    <!-- GitHub -->
+    <a use:tooltip={{text: "GitHub"}} aria-label="GitHub" class="social" id="gitea" target="_blank" href={giteaUrl}>
+        <svg tabindex="-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.11.82-.26.82-.577v-2.17c-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.084 1.84 1.237 1.84 1.237 1.07 1.835 2.807 1.305 3.492.998.108-.775.42-1.305.763-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.467-2.38 1.235-3.22-.123-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23.957-.266 1.98-.398 3-.403 1.02.005 2.043.137 3 .403 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.24 2.873.118 3.176.77.84 1.233 1.91 1.233 3.22 0 4.61-2.803 5.625-5.475 5.92.43.37.823 1.102.823 2.222v3.293c0 .32.218.694.825.577C20.565 21.797 24 17.298 24 12c0-6.63-5.37-12-12-12z"/>
         </svg>
     </a>
 

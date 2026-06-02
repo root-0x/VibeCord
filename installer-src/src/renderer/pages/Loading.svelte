@@ -1,9 +1,5 @@
 <div class="loader">
-    <img
-        class="loading-gif"
-        src="https://cdn.nightcord.ru/badge/c8695534-1f89-4379-a04c-ff28bb4366ed.gif"
-        alt="Loading..."
-    />
+    <div style="color: white; font-size: 24px; font-family: sans-serif;">VibeCord</div>
 </div>
 
 <style>

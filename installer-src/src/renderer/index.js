@@ -5,8 +5,8 @@ const app = new App({
     target: appElement
 });
 
-// Violet dot-grid background
-const bgSvg = `<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60'><circle cx='30' cy='30' r='1.5' fill='%238b5cf6' fill-opacity='0.7'/></svg>`;
+// Red dot-grid background
+const bgSvg = `<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60'><circle cx='30' cy='30' r='1.5' fill='%23dc2626' fill-opacity='0.7'/></svg>`;
 appElement.style.setProperty("--background", `url("data:image/svg+xml,${bgSvg}")`);
 
 
