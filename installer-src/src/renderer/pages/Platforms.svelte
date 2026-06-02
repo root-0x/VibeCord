@@ -2,8 +2,9 @@
     import page from "../transitions/page.js";
     import PageHeader from "../common/PageHeader.svelte";
     import Multiselect from "../common/Multiselect.svelte";
+    import Checkbox from "../common/Checkbox.svelte";
     import {canGoBack, canGoForward, nextPage} from "../stores/navigation";
-    import {action, platforms, paths} from "../stores/installation";
+    import {action, platforms, paths, enableDefaultPlugins} from "../stores/installation";
     import {platforms as platformLabels, validatePath, getBrowsePath} from "../actions/paths";
     import {remote} from "electron";
     import getStatic from "../getstatic";
@@ -57,6 +58,10 @@
         Choose Discord Versions
     </PageHeader>
 
+    <div class="plugin-toggle">
+        <Checkbox bind:checked={$enableDefaultPlugins} label="Enable Default Plugins" />
+    </div>
+
     {#each Object.entries(platformLabels) as [channel, label]}
         <Multiselect
             on:change={change}
@@ -71,3 +76,9 @@
         </Multiselect>
     {/each}
 </section>
+
+<style>
+    .plugin-toggle {
+        margin-bottom: 14px;
+    }
+</style>

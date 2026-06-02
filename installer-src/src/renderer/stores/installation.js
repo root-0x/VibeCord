@@ -6,6 +6,7 @@ export const status = writable("");
 export const hasAgreed = writable(false);
 export const platforms = writable({stable: false, canary: false, ptb: false});
 export const paths = writable({stable: locations.stable, canary: locations.canary, ptb: locations.ptb});
+export const enableDefaultPlugins = writable(true);
 
 export const progress = readwritable(0);
 export const action = readwritable("install");

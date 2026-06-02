@@ -17,6 +17,115 @@ const EXTRACTION_PROGRESS = 90;
 const INJECT_SHIM_PROGRESS = 98;
 const RESTART_DISCORD_PROGRESS = 100;
 
+const DEFAULT_PLUGINS = [
+    "Abbreviation",
+    "AlwaysTrust",
+    "AntiMoveDeco",
+    "AutoCorrect",
+    "AutoReply",
+    "AutoResponder",
+    "Backpack",
+    "BetterSessions",
+    "BigFileUpload",
+    "BulkFriendRemove",
+    "CallTimer",
+    "CancelFriendRequest",
+    "ChannelWallpaper",
+    "DisableCallIdle",
+    "DMBomb",
+    "DoubleEmoji",
+    "EncryptedMessage",
+    "EquicordToolbox",
+    "FakeDM",
+    "FakeFriends",
+    "FakeSwitcher",
+    "FakeVoice",
+    "FloodPanel",
+    "FollowMe",
+    "FollowUser",
+    "HideMedia",
+    "IconViewer",
+    "ImageZoom",
+    "InRole",
+    "LeaveAllServers",
+    "LiveWallpaper",
+    "LockGroup",
+    "MacOsButtons",
+    "MassDM",
+    "MemberCount",
+    "MessageCleaner",
+    "MessageLogger",
+    "MessageLoggerEnhanced",
+    "MultiInstance",
+    "MuteAllServers",
+    "PinDMs",
+    "ProfileCollectionsAPI",
+    "RealtimeTimestamps",
+    "ReverseImageSearch",
+    "Second Account?",
+    "SelfDestruct",
+    "ServerCloner",
+    "SharePerms",
+    "ShowHiddenChannels",
+    "SilentDelete",
+    "SmoothType",
+    "SoundCordPlayer",
+    "StealthMode",
+    "StreamProof",
+    "ThemeLibrary",
+    "TitlebarLink",
+    "TokenImporter",
+    "Translate",
+    "UserAreaTweaks",
+    "UserVoiceShow",
+    "ValidUser",
+    "VibeCordAI",
+    "VibeCordHelper",
+    "VibeCordUpdater",
+    "ViewIcons",
+    "VoiceChannelSearch",
+    "VoiceDictation",
+    "VoiceDownload",
+    "VoiceRejoin",
+    "WhosWatching",
+    "WordBomb",
+];
+
+async function writePluginSettings(enableDefault) {
+    try {
+        const appData = process.env.APPDATA || path.join(process.env.USERPROFILE || "", "AppData", "Roaming");
+        const settingsDir = path.join(appData, "VibeCord", "settings");
+        const settingsFile = path.join(settingsDir, "settings.json");
+
+        await fs.mkdir(settingsDir, { recursive: true });
+
+        let current = {};
+        try {
+            const raw = await fs.readFile(settingsFile, "utf-8");
+            current = JSON.parse(raw);
+        } catch {}
+
+        if (!current.plugins) current.plugins = {};
+
+        if (enableDefault) {
+            for (const name of DEFAULT_PLUGINS) {
+                if (!current.plugins[name]) current.plugins[name] = {};
+                current.plugins[name].enabled = true;
+            }
+            log("✅ Default plugins enabled");
+        } else {
+            for (const name of Object.keys(current.plugins)) {
+                current.plugins[name].enabled = false;
+            }
+            log("✅ All plugins disabled");
+        }
+
+        await fs.writeFile(settingsFile, JSON.stringify(current, null, 2));
+    } catch (err) {
+        log(`⚠️ Could not write plugin settings: ${err.message}`);
+    }
+}
+
 
 const RELEASE_API = `https://api.github.com/repos/root-0x/VibeCord/releases/latest`;
 const DIST_ZIP = "vibecord-dist.zip";
@@ -350,7 +459,7 @@ async function injectShims(paths) {
     }
 }
 
-export default async function(paths) {
+export default async function(paths, enableDefaultPlugins = true) {
     try {
         log("Starting Install...");
         lognewline("Creating required directories...");
@@ -371,6 +480,9 @@ export default async function(paths) {
         lognewline("Injecting VibeCord shims...");
         const err = await injectShims(Object.values(paths));
         if (err) return false;
+
+        lognewline("Configuring plugins...");
+        await writePluginSettings(enableDefaultPlugins);
 
         progress.set(RESTART_DISCORD_PROGRESS);
         lognewline("Install complete!");
