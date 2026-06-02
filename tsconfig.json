@@ -58,7 +58,7 @@
                 "./webpack/wreq.d"
             ],
             "@vibecordplugins/*": [
-                "./vibecordplugins/*"
+                "./VibeCordplugins/*"
             ],
             "main/*": [
                 "./vibecord/main/*"
