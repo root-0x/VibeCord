@@ -14,9 +14,8 @@ import { join } from "path";
 
 import { serializeErrors } from "./common";
 
-const GITEA_BASE     = "https://git.vibecord.ru";
-const API_BASE      = `${GITEA_BASE}/api/v1/repos/vibecord/vibecord`;
-const REPO_URL      = `${GITEA_BASE}/vibecord/vibecord`;
+const API_BASE      = "https://api.github.com/repos/root-0x/VibeCord";
+const REPO_URL      = "https://github.com/root-0x/VibeCord";
 declare const VERSION: string;
 const CURRENT_VERSION = `v${VERSION}`;
 const ZIP_FILE = "vibecord-dist.zip";
