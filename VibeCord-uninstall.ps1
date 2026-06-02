@@ -15,7 +15,7 @@ $EquilotlExe   = Join-Path $InstallerDir "EquilotlCli.exe"
 Clear-Host
 Write-Host ""
 Write-Host "  ╔══════════════════════════════════════════╗" -ForegroundColor Cyan
-Write-Host "  ║      VibeCord — Désinstalleur           ║" -ForegroundColor Cyan
+Write-Host "  ║      VIBECORD — Désinstalleur           ║" -ForegroundColor Cyan
 Write-Host "  ╚══════════════════════════════════════════╝" -ForegroundColor Cyan
 Write-Host ""
 

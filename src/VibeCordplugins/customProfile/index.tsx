@@ -974,7 +974,7 @@ function fakeUser(user: any): any {
 
 export default definePlugin({
     name: "CustomProfile",
-    enabledByDefault: false,
+    enabledByDefault: true,
     description: t("Visually customize your Discord profile (username, PFP, banner, badges, bio...) — persistent, only visible to you."),
     authors: [{ name: "VibeCord", id: 0n }],
     dependencies: ["HeaderBarAPI", "ContextMenuAPI"],

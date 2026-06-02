@@ -88,7 +88,7 @@ function inject(resourcesDir) {
     if (existsSync(appDirPath) && existsSync(join(appDirPath, "package.json"))) {
         try {
             const pkg = JSON.parse(readFileSync(join(appDirPath, "package.json"), "utf-8"));
-            if (pkg.name === "VibeCord") {
+            if (pkg.name === "vibecord") {
                 console.log("\x1b[33m[VibeCord] Déjà injecté ! Utilisez 'pnpm uninject' d'abord pour réinjecter.\x1b[0m");
                 return false;
             }
@@ -125,7 +125,7 @@ function inject(resourcesDir) {
     mkdirSync(appDirPath, { recursive: true });
 
     writeFileSync(join(appDirPath, "package.json"), JSON.stringify({
-        name: "VibeCord",
+        name: "vibecord",
         main: "index.js"
     }, null, 2));
 

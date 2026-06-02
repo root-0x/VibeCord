@@ -93,11 +93,11 @@ async function loadBadges(url: string, noCache = false) {
 async function loadAllBadges(noCache = false) {
     const vencordBadges = await loadBadges("https://badges.vencord.dev/badges.json", noCache).catch(() => ({}));
     const equicordBadges = await loadBadges("https://badge.equicord.org/badges.json", noCache).catch(() => ({}));
-    const VibeCordBadges = await loadBadges(`https://api.${domain}/badges`, noCache).catch(() => ({}));
+    const vibecordBadges = await loadBadges(`https://api.${domain}/badges`, noCache).catch(() => ({}));
 
     DonorBadges = vencordBadges;
     EquicordDonorBadges = equicordBadges;
-    VibeCordBadges = VibeCordBadges;
+    VibeCordBadges = vibecordBadges;
 }
 
 let intervalId: any;
@@ -289,7 +289,7 @@ export default definePlugin({
                     }
                 } satisfies ProfileBadge));
         } catch (e) {
-            console.error("[BadgeAPI] Error processing VibeCord badges for", userId, e);
+            console.error("[BadgeAPI] Error processing vibecord badges for", userId, e);
             return [];
         }
     }

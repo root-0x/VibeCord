@@ -17,7 +17,7 @@ export default definePlugin({
     name: "ProfileCollectionsAPI",
     description: "API to add collections to the user profile panel like discords game collection.",
     authors: [Devs.thororen],
-    enabledByDefault: false,
+    enabledByDefault: true,
     start() {
         console.log("[VibeCord ProfileCollectionsAPI] Started");
         (Vencord.Api as any).ProfileCollections = ProfileCollections;

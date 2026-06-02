@@ -6,8 +6,8 @@
 
 import { Button } from "@components/Button";
 import { Heading } from "@components/Heading";
-import { DEFAULT_COLOR, SWATCHES } from "@VibeCordplugins/pinDms/constants";
-import { categoryLen, createCategory, getCategory } from "@VibeCordplugins/pinDms/data";
+import { DEFAULT_COLOR, SWATCHES } from "@vibecordplugins/pinDms/constants";
+import { categoryLen, createCategory, getCategory } from "@vibecordplugins/pinDms/data";
 import { classNameFactory } from "@utils/css";
 import { ModalContent, ModalFooter, ModalHeader, ModalRoot, openModalLazy } from "@utils/modal";
 import { RenderModalProps } from "@vencord/discord-types";

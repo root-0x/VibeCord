@@ -6,7 +6,7 @@ const { join } = require("path");
 // ─── Configuration de Build VibeCord ─────────────────────────────────────────
 
 function killVibeCord() {
-    const releaseDir = join(__dirname, "release", "VibeCord-dist");
+    const releaseDir = join(__dirname, "release", "vibecord-dist");
     const releaseExe = join(releaseDir, "Discord.exe");
 
     try {
@@ -46,13 +46,13 @@ function buildEquicord() {
 
 function buildVibeCordFromDiscord(discordApp) {
     const discordRes = join(discordApp, "resources");
-    const outDir = join(__dirname, "release", "VibeCord-dist");
+    const outDir = join(__dirname, "release", "vibecord-dist");
 
     if (existsSync(outDir)) {
         try { rmSync(outDir, { recursive: true, force: true }); } catch (e) { }
     }
 
-    console.log("[VibeCord] Copie des binaires Discord...");
+    console.log("[vibecord] Copie des binaires Discord...");
     mkdirSync(outDir, { recursive: true });
 
     for (const f of readdirSync(discordApp)) {
@@ -93,7 +93,7 @@ function buildVibeCordFromDiscord(discordApp) {
         cpSync(bootstrapSrc, bootstrapDst, { recursive: true });
     }
 
-    console.log("[VibeCord] Préparation de _app.asar...");
+    console.log("[vibecord] Préparation de _app.asar...");
     let appAsarSrc = join(discordRes, "_app.asar");
     if (!existsSync(appAsarSrc)) appAsarSrc = join(discordRes, "app.asar");
     
@@ -119,7 +119,7 @@ require(path.join(__dirname, "..", "app", "dist", "desktop", "patcher.js"));
 
     const outApp = join(outRes, "app");
     mkdirSync(outApp, { recursive: true });
-    writeFileSync(join(outApp, "package.json"), JSON.stringify({ name: "vibecord", main: "index.js", version: "1.0.0" }, null, 2));
+    writeFileSync(join(outApp, "package.json"), JSON.stringify({ name: "vibecord", main: "index.js", version: "1.18.0" }, null, 2));
     writeFileSync(join(outApp, "index.js"), `
 "use strict";
 const path = require("path");
@@ -139,9 +139,9 @@ require(path.join(__dirname, "dist", "desktop", "patcher.js"));
         if (existsSync(join(equicordDist, f))) cpSync(join(equicordDist, f), join(outDist, f));
     }
 
-    const VibeCordPreload = join(__dirname, "VibeCord-preload.js");
-    if (existsSync(VibeCordPreload)) {
-        cpSync(VibeCordPreload, join(outDist, "preload.js"));
+    const vibecordPreload = join(__dirname, "vibecord-preload.js");
+    if (existsSync(vibecordPreload)) {
+        cpSync(vibecordPreload, join(outDist, "preload.js"));
     }
 
     // FFmpeg et YT-DLP (cherche dans le dossier local ou PATH)
@@ -155,7 +155,7 @@ require(path.join(__dirname, "dist", "desktop", "patcher.js"));
     const injectScript = join(__dirname, "inject-discord.ps1");
     if (existsSync(injectScript)) cpSync(injectScript, join(outDir, "inject-discord.ps1"));
 
-    const iconSrc = join(__dirname, "VibeCord.ico");
+    const iconSrc = join(__dirname, "vibecord.ico");
     if (existsSync(iconSrc)) {
         cpSync(iconSrc, join(outDir, "app.ico"));
         // Rcedit pour le branding
@@ -167,7 +167,7 @@ require(path.join(__dirname, "dist", "desktop", "patcher.js"));
         } catch (e) { }
     }
 
-    console.log(`[VibeCord] Build terminé -> ${outDir}`);
+    console.log(`[vibecord] Build terminé -> ${outDir}`);
 }
 
 function obfuscateDesktop() {
@@ -193,18 +193,13 @@ module.exports = {
     appId: "com.vibecord.app",
     productName: "VibeCord",
     copyright: "Copyright 2026 VibeCord",
-    publish: {
-        provider: "github",
-        owner: "root-0x",
-        repo: "VibeCord"
-    },
     extraMetadata: { main: "index.js" },
     asar: false,
     files: ["index.js", "dist/desktop/**/*", "!**/*.map", "!**/*.ts"],
     directories: { output: "release", buildResources: "desktop/assets" },
     win: {
         target: [{ target: "dir", arch: ["x64"] }],
-        icon: "VibeCord.ico",
+        icon: "vibecord.ico",
         requestedExecutionLevel: "asInvoker"
     }
 };

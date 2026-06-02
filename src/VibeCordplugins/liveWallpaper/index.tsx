@@ -276,7 +276,7 @@ async function applyWallpaper() {
 
 export default definePlugin({
     name: "LiveWallpaper",
-    enabledByDefault: false,
+    enabledByDefault: true,
     description: "Global wallpaper for the entire Discord interface (image, gif, video). Compatible with ChannelWallpaper.",
     authors: [{ name: "VibeCord", id: 0n }],
     settings,

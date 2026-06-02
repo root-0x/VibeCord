@@ -90,7 +90,7 @@ export default definePlugin({
     name: "AntiMoveDeco",
     description: "Adds a button to prevent being moved or disconnected from a voice channel.",
     authors: [{ name: "VibeCord", id: 0n }],
-    enabledByDefault: false,
+    enabledByDefault: true,
 
     userAreaButton: {
         icon: () => <AntiMoveDecoIcon enabled={enabled} />,

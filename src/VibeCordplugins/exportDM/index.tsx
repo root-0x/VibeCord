@@ -539,11 +539,11 @@ function ExportButton() {
 
 export default definePlugin({
     name: "ExportDM",
-    enabledByDefault: false,
+    enabledByDefault: true,
     description: "Exports your DMs with messages, images, videos, audio, links, embeds, stickers, reactions in TXT/JSON/CSV/MD/HTML.",
     authors: [{ name: "VibeCord", id: 0n }],
     dependencies: ["HeaderBarAPI"],
 
-    start() { addHeaderBarButton("VibeCord-export-dm", () => <ExportButton />, 4); },
-    stop() { removeHeaderBarButton("VibeCord-export-dm"); },
+    start() { addHeaderBarButton("vibecord-export-dm", () => <ExportButton />, 4); },
+    stop() { removeHeaderBarButton("vibecord-export-dm"); },
 });

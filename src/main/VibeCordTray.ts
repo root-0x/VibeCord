@@ -57,7 +57,7 @@ export function initVibeCordTray(injectorPath: string) {
                     label: "Uninstall VibeCord",
                     click() {
                         const uninstallerCandidates = [
-                            join(process.env.LOCALAPPDATA || "", "Programs", "VibeCord", "Uninstall VibeCord.exe"),
+                            join(process.env.LOCALAPPDATA || "", "Programs", "vibecord", "Uninstall VibeCord.exe"),
                             join(process.env.LOCALAPPDATA || "", "Programs", "VibeCord", "Uninstall VibeCord.exe"),
                             join(process.env.PROGRAMFILES || "", "VibeCord", "Uninstall VibeCord.exe"),
                         ];

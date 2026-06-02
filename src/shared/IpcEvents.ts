@@ -66,7 +66,7 @@ export const enum IpcEvents {
     THUMBAR_BUTTON_CLICK = "SoundCordThumbarButtonClick",
 
     // VibeCord Updater â€” tÃ©lÃ©charge un exe depuis une URL et le lance
-    VibeCord_DOWNLOAD_AND_RUN = "VibeCordDownloadAndRun",
+    VIBECORD_DOWNLOAD_AND_RUN = "VibeCordDownloadAndRun",
 
     // VB-Audio Virtual Cable (Windows only)
     CHECK_VB_CABLE = "VibeCordCheckVBCable",

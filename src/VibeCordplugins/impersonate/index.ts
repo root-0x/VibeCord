@@ -29,7 +29,7 @@ async function resolveFile(options: Argument[], ctx: CommandContext): Promise<Fi
 
 export default definePlugin({
     name: "Impersonate",
-    enabledByDefault: false,
+    enabledByDefault: true,
     description: "Locally simulates a message sent by any user via the /impersonate command. Only visible to you.",
     authors: [Devs.BigDuck],
     dependencies: ["CommandsAPI"],

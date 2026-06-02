@@ -5,7 +5,7 @@
  */
 
 import { Button } from "@components/Button";
-import { SessionInfo } from "@VibeCordplugins/betterSessions/types";
+import { SessionInfo } from "@vibecordplugins/betterSessions/types";
 import { openModal } from "@utils/modal";
 
 import { RenameModal } from "./RenameModal";

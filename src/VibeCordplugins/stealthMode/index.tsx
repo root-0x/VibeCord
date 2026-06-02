@@ -17,7 +17,7 @@ export function isStealthEnabled(): boolean {
 
 export default definePlugin({
     name: "StealthMode",
-    enabledByDefault: false,
+    enabledByDefault: true,
     description: "Hides all plugin buttons without disabling them. Shortcut: Ctrl+Shift+H. The toggle is in VibeCord Settings.",
     authors: [{ name: "VibeCord", id: 0n }],
     required: true,
@@ -28,6 +28,6 @@ export default definePlugin({
     },
 
     stop() {
-        document.body.classList.remove("VibeCord-stealth");
+        document.body.classList.remove("vibecord-stealth");
     },
 });

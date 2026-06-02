@@ -14,11 +14,12 @@ import { join } from "path";
 
 import { serializeErrors } from "./common";
 
-const API_BASE      = "https://api.github.com/repos/root-0x/VibeCord";
-const REPO_URL      = "https://github.com/root-0x/VibeCord";
+const GITEA_BASE     = "https://git.vibecord.ru";
+const API_BASE      = `${GITEA_BASE}/api/v1/repos/vibecord/vibecord`;
+const REPO_URL      = `${GITEA_BASE}/vibecord/vibecord`;
 declare const VERSION: string;
 const CURRENT_VERSION = `v${VERSION}`;
-const ZIP_FILE = "VibeCord-dist.zip";
+const ZIP_FILE = "vibecord-dist.zip";
 
 let pendingDownloadUrl: string | null = null;
 let pendingVersion: string | null = null;
@@ -78,7 +79,7 @@ async function applyUpdates(): Promise<boolean> {
         const data = await fetchBuffer(pendingDownloadUrl);
 
         // Save zip to temp
-        const zipPath = join(app.getPath("temp"), `VibeCord-update-${Date.now()}.zip`);
+        const zipPath = join(app.getPath("temp"), `vibecord-update-${Date.now()}.zip`);
         writeFileSync(zipPath, data, { flush: true });
 
         // The zip was created from dist/desktop/ with includeBaseDirectory=false,
@@ -88,7 +89,7 @@ async function applyUpdates(): Promise<boolean> {
 
         // Extract using PowerShell Expand-Archive (reliable ZIP support on all Windows 10/11)
         // We extract to a temp folder first, then move files over to avoid half-extracted state
-        const tmpExtract = join(app.getPath("temp"), `VibeCord-extract-${Date.now()}`);
+        const tmpExtract = join(app.getPath("temp"), `vibecord-extract-${Date.now()}`);
 
         return await new Promise<boolean>((resolve, reject) => {
             // Step 1 — extract zip to temp folder

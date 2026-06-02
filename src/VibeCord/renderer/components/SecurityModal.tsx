@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Vencord, a Discord client mod
  * Copyright (c) 2024 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
@@ -86,9 +86,9 @@ export function SecurityModal(props: ModalProps) {
                             <strong>Support &amp; Community:</strong>{" "}
                             <span
                                 style={{ color: "var(--text-link)", cursor: "pointer" }}
-                                onClick={() => window.open("https://discord.gg/VibeCord", "_blank")}
+                                onClick={() => window.open("https://discord.gg/vibecord", "_blank")}
                             >
-                                discord.gg/VibeCord
+                                discord.gg/vibecord
                             </span>
                         </li>
                     </ul>

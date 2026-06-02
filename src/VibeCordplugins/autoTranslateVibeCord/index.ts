@@ -395,7 +395,7 @@ export const translations: TranslationMap = {
 
 const AutoTranslateVibeCord = definePlugin({
     name: "AutoTranslateVibeCord",
-    enabledByDefault: false,
+    enabledByDefault: true,
     description: "Automatic translation for VibeCord.",
     authors: [{ name: "Trigger", id: 0n }],
     options: {

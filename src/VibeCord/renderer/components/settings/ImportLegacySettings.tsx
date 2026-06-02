@@ -1,15 +1,15 @@
-/*
+﻿/*
  * Vencord, a Discord client mod
  * Copyright (c) 2026 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 import { BaseText } from "@VibeCord/types/components";
-import { React, useRef,useState } from "react";
+import { React, useRef,useState } from "@VibeCord/types/webpack/common";
 
 import { cl } from "./Settings";
 
-function detectSource(json: any): "equicord" | "vencord" | "VibeCord" | "unknown" {
+function detectSource(json: any): "equicord" | "vencord" | "vibecord" | "unknown" {
     // Heuristiques basées sur les clés présentes dans le JSON
     if (!json || typeof json !== "object") return "unknown";
 
@@ -22,7 +22,7 @@ function detectSource(json: any): "equicord" | "vencord" | "VibeCord" | "unknown
     // Plugins spécifiques à Equicord
     if (pluginNames.some(p => ["EquicordHelper", "EquicordCSS"].includes(p))) return "equicord";
     // Plugins spécifiques à VibeCord
-    if (pluginNames.some(p => ["VibeCordHelper", "equicordHelper"].includes(p))) return "VibeCord";
+    if (pluginNames.some(p => ["VibeCordHelper", "equicordHelper"].includes(p))) return "vibecord";
     // Fallback : si le fichier contient des clés Vencord communes
     if (pluginNames.length > 0) return "vencord";
 
@@ -64,7 +64,7 @@ export function ImportLegacySettingsButton({ settings }: { settings: any; }) {
             const sourceLabel =
                 source === "equicord" ? "Equicord" :
                 source === "vencord" ? "Vencord" :
-                source === "VibeCord" ? "VibeCord" : "inconnu";
+                source === "vibecord" ? "VibeCord" : "inconnu";
 
             const cleaned = cleanForVibeCord(json);
 

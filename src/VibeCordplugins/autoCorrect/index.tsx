@@ -10,7 +10,7 @@ import { showApiKeyWarning } from "@utils/apiKeyWarning";
 import definePlugin, { OptionType } from "@utils/types";
 import { React } from "@webpack/common";
 
-import { getGroqKey,groqChat } from "../VibeCordAI/groqManager";
+import { getGroqKey,groqChat } from "../vibecordAI/groqManager";
 
 // ── Settings ───────────────────────────────────────────────────────────────────
 
@@ -159,7 +159,7 @@ const AutoCorrectChatBarButton: ChatBarButtonFactory = ({ type }) => {
 
 export default definePlugin({
     name: "AutoCorrect",
-    enabledByDefault: false,
+    enabledByDefault: true,
     description: "Automatically corrects spelling and grammar before sending. Requires a free Groq API key configured in VibeCordAI.",
     authors: [{ name: "VibeCord", id: 0n }],
     settings,

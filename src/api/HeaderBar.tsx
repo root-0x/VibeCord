@@ -222,8 +222,8 @@ function persistStealth(v: boolean) {
 // Éléments NON-React uniquement (titlebar, VibeCordAI nav)
 // NE PAS cacher les entrées settings sidebar — l'utilisateur doit pouvoir accéder aux paramètres
 const NON_REACT_SELECTORS = [
-    "#VibeCord-titlebar-btn",
-    "#VibeCord-titlebar-link-style",
+    "#vibecord-titlebar-btn",
+    "#vibecord-titlebar-link-style",
     ".nai-nav-item",
 ];
 
@@ -241,7 +241,7 @@ function hideNonReactElements(hide: boolean) {
 }
 
 export function syncStealthBodyClass() {
-    try { if (_stealthActive) document.body?.classList.add("VibeCord-stealth"); else document.body?.classList.remove("VibeCord-stealth"); } catch { }
+    try { if (_stealthActive) document.body?.classList.add("vibecord-stealth"); else document.body?.classList.remove("vibecord-stealth"); } catch { }
     hideNonReactElements(_stealthActive);
 }
 
@@ -251,7 +251,7 @@ export function toggleStealthMode() {
     hideNonReactElements(_stealthActive);
     // Notify React to re-render components (returns null when stealth is on)
     _notifyStealthChange();
-    try { if (_stealthActive) document.body?.classList.add("VibeCord-stealth"); else document.body?.classList.remove("VibeCord-stealth"); } catch { }
+    try { if (_stealthActive) document.body?.classList.add("vibecord-stealth"); else document.body?.classList.remove("vibecord-stealth"); } catch { }
     console.log("[StealthMode] toggled →", _stealthActive);
     return _stealthActive;
 }
@@ -259,7 +259,7 @@ export function toggleStealthMode() {
 // ── Auto-init at module load ──
 if (_stealthActive) {
     try { hideNonReactElements(true); } catch { }
-    try { document.body?.classList.add("VibeCord-stealth"); } catch { }
+    try { document.body?.classList.add("vibecord-stealth"); } catch { }
 }
 
 // Register Ctrl+Shift+H globally at module load
@@ -293,7 +293,7 @@ try {
         if (document.body) startObserver();
         else document.addEventListener("DOMContentLoaded", startObserver);
     }
-    window.addEventListener("VibeCord-stealth-change", () => {
+    window.addEventListener("vibecord-stealth-change", () => {
         if (_stealthActive) startObserver();
         else stopObserver();
     });
@@ -304,7 +304,7 @@ const stealthListeners = new Set<() => void>();
 export function _notifyStealthChange() {
     // NO hideNonReactElements here — already handled in toggleStealthMode
     stealthListeners.forEach(fn => fn());
-    window.dispatchEvent(new Event("VibeCord-stealth-change"));
+    window.dispatchEvent(new Event("vibecord-stealth-change"));
 }
 export function addStealthListener(fn: () => void) { stealthListeners.add(fn); }
 export function removeStealthListener(fn: () => void) { stealthListeners.delete(fn); }
@@ -316,11 +316,11 @@ function HeaderBarButtons() {
         const listener = () => forceUpdate(n => n + 1);
         headerBarListeners.add(listener);
         stealthListeners.add(listener);
-        window.addEventListener("VibeCord-stealth-change", listener);
+        window.addEventListener("vibecord-stealth-change", listener);
         return () => {
             headerBarListeners.delete(listener);
             stealthListeners.delete(listener);
-            window.removeEventListener("VibeCord-stealth-change", listener);
+            window.removeEventListener("vibecord-stealth-change", listener);
         };
     }, []);
 
@@ -346,11 +346,11 @@ function ChannelToolbarButtons() {
         const listener = () => forceUpdate(n => n + 1);
         channelToolbarListeners.add(listener);
         stealthListeners.add(listener);
-        window.addEventListener("VibeCord-stealth-change", listener);
+        window.addEventListener("vibecord-stealth-change", listener);
         return () => {
             channelToolbarListeners.delete(listener);
             stealthListeners.delete(listener);
-            window.removeEventListener("VibeCord-stealth-change", listener);
+            window.removeEventListener("vibecord-stealth-change", listener);
         };
     }, []);
 

@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  * Vencord, a modification for Discord's desktop app
  * Copyright (c) 2022 Vendicated and contributors
  *
@@ -136,7 +136,7 @@ import { SearchStatus, TUTORIAL_CACHE } from "./components/Common";
 // @ts-ignore
 window.TUTORIAL_CACHE = TUTORIAL_CACHE;
 
-// Fallback select natif si le composant Discord n'est pas trouvé
+// Fallback select natif si le composant Discord n'est pas trouvÃ©
 function NativeSelect({ options, select, isSelected }: any) {
     const currentVal = options.find((o: any) => isSelected(o.value))?.value ?? options.find((o: any) => o.default)?.value ?? options[0]?.value;
     return (
@@ -220,7 +220,7 @@ export default function PluginSettings({ premiumOnly = false }: PluginSettingsPr
 
     const hasUserPlugins = useMemo(() => !IS_STANDALONE && Object.values(PluginMeta).some(m => m.userPlugin), []);
 
-    const [searchValue, setSearchValue] = useState({ value: "", status: SearchStatus.VibeCord });
+    const [searchValue, setSearchValue] = useState({ value: "", status: SearchStatus.VIBECORD });
     const [searchInput, setSearchInput] = useState("");
 
     const debouncedSetSearch = useMemo(
@@ -237,11 +237,11 @@ export default function PluginSettings({ premiumOnly = false }: PluginSettingsPr
         setSearchValue(prev => ({ ...prev, status }));
     }, []);
 
-    // Rafraîchir quand un tuto est détecté
+    // RafraÃ®chir quand un tuto est dÃ©tectÃ©
     React.useEffect(() => {
         const handler = () => setSearchValue(prev => ({ ...prev }));
-        window.addEventListener("VibeCord-tutorial-detected", handler);
-        return () => window.removeEventListener("VibeCord-tutorial-detected", handler);
+        window.addEventListener("vibecord-tutorial-detected", handler);
+        return () => window.removeEventListener("vibecord-tutorial-detected", handler);
     }, []);
 
     const pluginFilter = useCallback((plugin: typeof Plugins[keyof typeof Plugins], newPluginsSet: Set<string> | null) => {
@@ -263,11 +263,11 @@ export default function PluginSettings({ premiumOnly = false }: PluginSettingsPr
             case SearchStatus.ENABLED:
                 if (!enabled) return false;
                 break;
-            case SearchStatus.VibeCord:
-                if (!PluginMeta[plugin.name].folderName.startsWith("src/VibeCordplugins/")) return false;
+            case SearchStatus.VIBECORD:
+                if (!PluginMeta[plugin.name].folderName.startsWith("src/vibecordplugins/")) return false;
                 break;
             case SearchStatus.OTHERS:
-                if (PluginMeta[plugin.name].folderName.startsWith("src/VibeCordplugins/") || PluginMeta[plugin.name].folderName.startsWith("src/plugins/_")) return false;
+                if (PluginMeta[plugin.name].folderName.startsWith("src/vibecordplugins/") || PluginMeta[plugin.name].folderName.startsWith("src/plugins/_")) return false;
                 if (!PluginMeta[plugin.name].folderName.startsWith("src/plugins/")) return false;
                 break;
             case SearchStatus.VENCORD:
@@ -315,8 +315,8 @@ export default function PluginSettings({ premiumOnly = false }: PluginSettingsPr
 
     const handleRestartNeeded = useCallback((name: string, key: string) => changes.handleChange(`${name}:${key}`), [changes]);
 
-    const { VibeCordPlugins, othersPlugins, requiredPlugins } = useMemo(() => {
-        const VibeCordPlugins = [] as JSX.Element[];
+    const { vibecordPlugins, othersPlugins, requiredPlugins } = useMemo(() => {
+        const vibecordPlugins = [] as JSX.Element[];
         const othersPlugins = [] as JSX.Element[];
         const requiredPlugins = [] as JSX.Element[];
 
@@ -349,7 +349,7 @@ export default function PluginSettings({ premiumOnly = false }: PluginSettingsPr
                 );
             } else {
                 const folderName = PluginMeta[p.name]?.folderName ?? "";
-                const isVibeCord = folderName.startsWith("src/VibeCordplugins/");
+                const isVibeCord = folderName.startsWith("src/vibecordplugins/");
                 const card = (
                     <PluginCard
                         onRestartNeeded={handleRestartNeeded}
@@ -360,13 +360,13 @@ export default function PluginSettings({ premiumOnly = false }: PluginSettingsPr
                     />
                 );
                 if (isVibeCord) {
-                    VibeCordPlugins.push(card);
+                    vibecordPlugins.push(card);
                 } else {
                     othersPlugins.push(card);
                 }
             }
         }
-        return { VibeCordPlugins, othersPlugins, requiredPlugins };
+        return { vibecordPlugins, othersPlugins, requiredPlugins };
     }, [sortedPlugins, searchValue, newPluginsSet, depMap, settings.plugins, pluginFilter, handleRestartNeeded]);
 
     function resetCheckAndDo() {
@@ -422,7 +422,7 @@ export default function PluginSettings({ premiumOnly = false }: PluginSettingsPr
         const enabledUserPlugins = enabledPlugins.filter(p => PluginMeta[p].userPlugin).length;
         return { totalStockPlugins, totalUserPlugins, enabledStockPlugins, enabledUserPlugins, enabledPlugins };
     }, [settings.plugins]);
-    const allPlugins = [...VibeCordPlugins, ...othersPlugins];
+    const allPlugins = [...vibecordPlugins, ...othersPlugins];
     const pluginsToLoad = Math.min(36, allPlugins.length);
     const [visibleCount, setVisibleCount] = React.useState(pluginsToLoad);
     const loadMore = React.useCallback(() => {
@@ -439,8 +439,8 @@ export default function PluginSettings({ premiumOnly = false }: PluginSettingsPr
     }, [isSentinelVisible, visibleCount, allPlugins.length, dLoadMore]);
 
     // Split visible count between the two sections proportionally
-    const VibeCordVisible = VibeCordPlugins.slice(0, Math.min(visibleCount, VibeCordPlugins.length));
-    const othersVisible = othersPlugins.slice(0, Math.max(0, visibleCount - VibeCordPlugins.length));
+    const vibecordVisible = vibecordPlugins.slice(0, Math.min(visibleCount, vibecordPlugins.length));
+    const othersVisible = othersPlugins.slice(0, Math.max(0, visibleCount - vibecordPlugins.length));
 
     return (
         <SettingsTab>
@@ -476,7 +476,7 @@ export default function PluginSettings({ premiumOnly = false }: PluginSettingsPr
                                 { label: "Show All", value: SearchStatus.ALL, default: true },
                                 { label: "Show Enabled", value: SearchStatus.ENABLED },
                                 { label: "Show Disabled", value: SearchStatus.DISABLED },
-                                { label: "Show VibeCord Plugins", value: SearchStatus.VibeCord },
+                                { label: "Show VibeCord Plugins", value: SearchStatus.VIBECORD },
                                 { label: "Show Others Plugins", value: SearchStatus.OTHERS },
                                 { label: "Show New", value: SearchStatus.NEW },
                                 hasUserPlugins && { label: "Show UserPlugins", value: SearchStatus.USER_PLUGINS },
@@ -493,11 +493,11 @@ export default function PluginSettings({ premiumOnly = false }: PluginSettingsPr
             {premiumOnly ? (
                 <>
                     <HeadingTertiary className={Margins.top20}>Premium Plugins</HeadingTertiary>
-                    {VibeCordPlugins.length || othersPlugins.length
+                    {vibecordPlugins.length || othersPlugins.length
                         ? (
                             <div className={cl("grid")}>
-                                {[...VibeCordVisible, ...othersVisible].length
-                                    ? [...VibeCordVisible, ...othersVisible]
+                                {[...vibecordVisible, ...othersVisible].length
+                                    ? [...vibecordVisible, ...othersVisible]
                                     : <Paragraph>No plugins meet the search criteria.</Paragraph>
                                 }
                             </div>
@@ -507,11 +507,11 @@ export default function PluginSettings({ premiumOnly = false }: PluginSettingsPr
                 </>
             ) : (
                 <>
-                    {VibeCordPlugins.length > 0 && (
+                    {vibecordPlugins.length > 0 && (
                         <>
                             <HeadingTertiary className={Margins.top20}>VibeCord Plugins</HeadingTertiary>
                             <div className={cl("grid")}>
-                                {VibeCordVisible}
+                                {vibecordVisible}
                             </div>
                         </>
                     )}
@@ -526,7 +526,7 @@ export default function PluginSettings({ premiumOnly = false }: PluginSettingsPr
                         </>
                     )}
 
-                    {VibeCordPlugins.length === 0 && othersPlugins.length === 0 && (
+                    {vibecordPlugins.length === 0 && othersPlugins.length === 0 && (
                         <ExcludedPluginsList search={search} />
                     )}
 

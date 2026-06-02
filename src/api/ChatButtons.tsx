@@ -110,11 +110,11 @@ function VencordChatBarButtons(props: ChatBarProps) {
     useEffect(() => {
         const listener = () => forceUpdate(n => n + 1);
         addStealthListener(listener);
-        window.addEventListener("VibeCord-stealth-change", listener);
+        window.addEventListener("vibecord-stealth-change", listener);
         backpackListeners.add(listener);
         return () => {
             removeStealthListener(listener);
-            window.removeEventListener("VibeCord-stealth-change", listener);
+            window.removeEventListener("vibecord-stealth-change", listener);
             backpackListeners.delete(listener);
         };
     }, []);

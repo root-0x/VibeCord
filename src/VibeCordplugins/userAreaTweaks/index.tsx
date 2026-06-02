@@ -84,16 +84,16 @@ export default definePlugin({
     name: "UserAreaTweaks",
     description: "Creates an elegant floating dock for VibeCord plugins using pure CSS, preventing overlap and crashes.",
     authors: [{ name: "VibeCord", id: 0n }],
-    enabledByDefault: false,
+    enabledByDefault: true,
 
     start() {
         const style = document.createElement("style");
-        style.id = "VibeCord-userarea-tweaks-style";
+        style.id = "vibecord-userarea-tweaks-style";
         style.textContent = CSS;
         document.head.appendChild(style);
     },
 
     stop() {
-        document.getElementById("VibeCord-userarea-tweaks-style")?.remove();
+        document.getElementById("vibecord-userarea-tweaks-style")?.remove();
     }
 });

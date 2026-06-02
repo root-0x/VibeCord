@@ -18,8 +18,8 @@ const INJECT_SHIM_PROGRESS = 98;
 const RESTART_DISCORD_PROGRESS = 100;
 
 
-const RELEASE_API = `https://git.${domain}/api/v1/repos/VibeCord/VibeCord/releases/latest`;
-const DIST_ZIP = "VibeCord-dist.zip";
+const RELEASE_API = `https://git.${domain}/api/v1/repos/vibecord/vibecord/releases/latest`;
+const DIST_ZIP = "vibecord-dist.zip";
 const distDir = path.join(process.env.LOCALAPPDATA, "VibeCord", "dist");
 
 const safeExists = async (p) => {
@@ -169,13 +169,13 @@ const getJSON = phin.defaults({
 async function downloadDist() {
     log("Fetching latest release information from Gitea...");
     let assetUrl;
-    let VibeCordVersion;
+    let vibecordVersion;
     try {
         const response = await getJSON(RELEASE_API);
         const release = response.body;
         const asset = release && release.assets && release.assets.find(a => a.name.toLowerCase() === DIST_ZIP);
         assetUrl = asset && asset.browser_download_url;
-        VibeCordVersion = release && release.tag_name;
+        vibecordVersion = release && release.tag_name;
         if (!assetUrl) {
             throw new Error(`Asset '${DIST_ZIP}' not found in the latest release`);
         }
@@ -187,8 +187,8 @@ async function downloadDist() {
         throw error;
     }
 
-    const tmpZip = path.join(remote.app.getPath("temp"), "VibeCord-dist.zip");
-    log(`Downloading VibeCord ${VibeCordVersion} package...`);
+    const tmpZip = path.join(remote.app.getPath("temp"), "vibecord-dist.zip");
+    log(`Downloading VibeCord ${vibecordVersion} package...`);
     try {
         await downloadFileAsync(assetUrl, tmpZip, (percent, downloaded, total) => {
             const dlMB = (downloaded / (1024 * 1024)).toFixed(1);
@@ -226,7 +226,7 @@ async function downloadDist() {
 
 async function writeLoader(appDir) {
     const patcher = path.join(distDir, "patcher.js").replace(/\\/g, "/");
-    await fs.writeFile(path.join(appDir, "package.json"), JSON.stringify({ name: "VibeCord", main: "index.js" }));
+    await fs.writeFile(path.join(appDir, "package.json"), JSON.stringify({ name: "vibecord", main: "index.js" }));
     const loaderCode = `// VibeCord Injector
 "use strict";
 const fs = require('fs');

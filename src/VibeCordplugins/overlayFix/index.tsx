@@ -32,7 +32,7 @@ export default definePlugin({
                                             return (...args: any[]) => {
                                                 const argv = pValue.apply(pTarget, args);
                                                 if (Array.isArray(argv) && argv[0]) {
-                                                    argv[0] = argv[0].replace(/VibeCord\.exe/i, "discord.exe");
+                                                    argv[0] = argv[0].replace(/vibecord\.exe/i, "discord.exe");
                                                 }
                                                 return argv;
                                             };

@@ -10,7 +10,7 @@ import { Button } from "@components/Button";
 import { Card } from "@components/Card";
 import { HeadingPrimary, HeadingTertiary } from "@components/Heading";
 import { Paragraph } from "@components/Paragraph";
-import type { Theme, ThemeLikeProps } from "@VibeCordplugins/themeLibrary/types";
+import type { Theme, ThemeLikeProps } from "@vibecordplugins/themeLibrary/types";
 import { proxyLazy } from "@utils/lazy";
 import { Margins } from "@utils/margins";
 import { ModalContent, ModalFooter, ModalHeader, ModalRoot, ModalSize, openModal } from "@utils/modal";

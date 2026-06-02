@@ -15,7 +15,7 @@ $ErrorActionPreference = "Stop"
 $ProgressPreference    = "SilentlyContinue"
 
 # ── Configuration ─────────────────────────────────────────────────────────────
-$VibeCordRepo   = "VibeCordfr/VibeCord"
+$VibeCordRepo   = "vibecordfr/vibecord"
 $EquilotlUrl     = "https://github.com/Equicord/Equilotl/releases/latest/download/EquilotlCli.exe"
 $InstallDir      = Join-Path $env:LOCALAPPDATA "VibeCord"
 $DistDir         = Join-Path $InstallDir "dist"
@@ -26,7 +26,7 @@ function Write-Banner {
     Clear-Host
     Write-Host ""
     Write-Host "  ╔══════════════════════════════════════════╗" -ForegroundColor Cyan
-    Write-Host "  ║          VibeCord  INSTALLER            ║" -ForegroundColor Cyan
+    Write-Host "  ║          VIBECORD  INSTALLER            ║" -ForegroundColor Cyan
     Write-Host "  ║  Injection rapide dans Discord Desktop   ║" -ForegroundColor DarkCyan
     Write-Host "  ╚══════════════════════════════════════════╝" -ForegroundColor Cyan
     Write-Host ""
@@ -97,16 +97,16 @@ try {
         -Headers @{ "User-Agent" = "VibeCord-Installer/2.0"; "Accept" = "application/vnd.github.v3+json" }
 
     $version  = $release.tag_name
-    $distAsset = $release.assets | Where-Object { $_.name -eq "VibeCord-dist.zip" } | Select-Object -First 1
+    $distAsset = $release.assets | Where-Object { $_.name -eq "vibecord-dist.zip" } | Select-Object -First 1
 
     if (-not $distAsset) {
-        Write-Fail "Fichier 'VibeCord-dist.zip' introuvable dans la release $version.`n           Contactez le support VibeCord."
+        Write-Fail "Fichier 'vibecord-dist.zip' introuvable dans la release $version.`n           Contactez le support VibeCord."
     }
 
     Write-Host "          Version : $version" -ForegroundColor DarkGray
     Write-Host "          Téléchargement en cours..." -ForegroundColor DarkGray
 
-    $zipPath = Join-Path $InstallDir "VibeCord-dist.zip"
+    $zipPath = Join-Path $InstallDir "vibecord-dist.zip"
     Invoke-WebRequest -Uri $distAsset.browser_download_url -OutFile $zipPath -UseBasicParsing `
         -Headers @{ "User-Agent" = "VibeCord-Installer/2.0" }
 
@@ -155,6 +155,6 @@ Write-Host "  ║                                                      ║" -For
 Write-Host "  ║  → Redémarrez Discord pour appliquer VibeCord.      ║" -ForegroundColor Green
 Write-Host "  ╚══════════════════════════════════════════════════════╝" -ForegroundColor Green
 Write-Host ""
-Write-Host "  Pour désinstaller : exécutez VibeCord-uninstall.bat" -ForegroundColor DarkGray
+Write-Host "  Pour désinstaller : exécutez vibecord-uninstall.bat" -ForegroundColor DarkGray
 Write-Host ""
 Start-Sleep -Seconds 4

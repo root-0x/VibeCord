@@ -67,7 +67,7 @@ function uninject(resourcesDir) {
     if (existsSync(appDirPath)) {
         try {
             const pkg = JSON.parse(readFileSync(join(appDirPath, "package.json"), "utf-8"));
-            if (pkg.name !== "VibeCord") {
+            if (pkg.name !== "vibecord") {
                 console.warn(`\x1b[33m[VibeCord] Le dossier app/ existe mais n'a pas été créé par VibeCord (name: "${pkg.name}").\x1b[0m`);
                 console.warn("\x1b[33m            Abandon pour éviter de casser un autre mod.\x1b[0m");
                 return false;

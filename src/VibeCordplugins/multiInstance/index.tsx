@@ -17,7 +17,7 @@ import { t } from "../autoTranslateVibeCord";
 
 const Native = VencordNative.pluginHelpers.MultiInstance as PluginNative<typeof import("./native")>;
 const STORE_KEY = "TokenImporter_accounts";
-const MI_TOKEN_CACHE_KEY = "VibeCord-mi-token-cache";
+const MI_TOKEN_CACHE_KEY = "vibecord-mi-token-cache";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Token cache — capture les tokens des accounts natifs Discord
@@ -191,8 +191,8 @@ function ContextMenuPortal(props: CtxMenuProps) {
 
     // Crée le container portal une seule fois
     const [container] = React.useState(() => {
-        const el = document.getElementById("VibeCord-mi-ctx-root") ?? document.createElement("div");
-        el.id = "VibeCord-mi-ctx-root";
+        const el = document.getElementById("vibecord-mi-ctx-root") ?? document.createElement("div");
+        el.id = "vibecord-mi-ctx-root";
         if (!el.parentNode) document.body.appendChild(el);
         return el;
     });
@@ -555,7 +555,7 @@ function MultiInstanceButton() {
 
 export default definePlugin({
     name: "MultiInstance",
-    enabledByDefault: false,
+    enabledByDefault: true,
     description: "Opens a 2nd Discord (new window or split screen) with another account.",
     authors: [{ name: "VibeCord", id: 0n }],
     dependencies: ["HeaderBarAPI"],
@@ -567,13 +567,13 @@ export default definePlugin({
         hookEncryptAndStoreTokens();
         this._fluxUnsub = hookFluxDispatcher();
         captureCurrentToken();
-        addHeaderBarButton("VibeCord-multi-instance", () => <MultiInstanceButton />, 9);
+        addHeaderBarButton("vibecord-multi-instance", () => <MultiInstanceButton />, 9);
     },
 
     stop() {
-        removeHeaderBarButton("VibeCord-multi-instance");
+        removeHeaderBarButton("vibecord-multi-instance");
         if (this._fluxUnsub) { this._fluxUnsub(); this._fluxUnsub = null; }
-        const root = document.getElementById("VibeCord-mi-ctx-root");
+        const root = document.getElementById("vibecord-mi-ctx-root");
         if (root) root.remove();
     },
 });

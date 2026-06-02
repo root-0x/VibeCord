@@ -37,7 +37,7 @@ async function deleteShims(paths) {
                 const pkg = path.join(appDir, "package.json");
                 if (await safeExists(pkg)) {
                     const content = await fs.readFile(pkg, "utf-8");
-                    if (content.includes('"VibeCord"')) {
+                    if (content.includes('"vibecord"')) {
                         try { await fs.rm(appDir, { recursive: true, force: true }); } catch {}
                     }
                 }

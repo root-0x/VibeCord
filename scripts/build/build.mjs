@@ -78,7 +78,7 @@ const globNativesPlugin = {
         });
 
         build.onLoad({ filter, namespace: "import-natives" }, async () => {
-            const pluginDirs = ["plugins", "userplugins", "VibeCordplugins"];
+            const pluginDirs = ["plugins", "userplugins", "vibecordplugins"];
             let code = "";
             let natives = "\n";
             let i = 0;
@@ -178,7 +178,7 @@ const buildConfigs = ([
     {
         ...nodeCommonOpts,
         entryPoints: [join(dirname(fileURLToPath(import.meta.url)), "../../src/main/index.ts")],
-        outfile: "dist/VibeCord/main.js",
+        outfile: "dist/vibecord/main.js",
         footer: { js: "//# sourceURL=file:///VencordDesktopMain\n" + sourceMapFooter("main") },
         sourcemap,
         plugins: [
@@ -195,7 +195,7 @@ const buildConfigs = ([
     {
         ...commonOpts,
         entryPoints: [join(dirname(fileURLToPath(import.meta.url)), "../../src/Vencord.ts")],
-        outfile: "dist/VibeCord/renderer.js",
+        outfile: "dist/vibecord/renderer.js",
         format: "iife",
         target: ["esnext"],
         footer: { js: "//# sourceURL=file:///VencordDesktopRenderer\n" + sourceMapFooter("renderer") },
@@ -215,7 +215,7 @@ const buildConfigs = ([
     {
         ...nodeCommonOpts,
         entryPoints: [join(dirname(fileURLToPath(import.meta.url)), "../../src/preload.ts")],
-        outfile: "dist/VibeCord/preload.js",
+        outfile: "dist/vibecord/preload.js",
         footer: { js: "//# sourceURL=file:///VencordPreload\n" + sourceMapFooter("preload") },
         sourcemap,
         define: {
@@ -231,11 +231,11 @@ await buildOrWatchAll(buildConfigs);
 
 await Promise.all([
     writeFile("dist/desktop/package.json", JSON.stringify({
-        name: "VibeCord",
+        name: "vibecord",
         main: "patcher.js"
     })),
-    writeFile("dist/VibeCord/package.json", JSON.stringify({
-        name: "VibeCord",
+    writeFile("dist/vibecord/package.json", JSON.stringify({
+        name: "vibecord",
         main: "main.js"
     }))
 ]);
@@ -245,7 +245,7 @@ await Promise.all([
 if (!watch && !IS_DEV) {
     await Promise.all([
         obfuscateDir("dist/desktop"),
-        obfuscateDir("dist/VibeCord"),
+        obfuscateDir("dist/vibecord"),
     ]);
 } else {
     console.log("[build] Obfuscation skipped in dev/watch mode.");
@@ -255,5 +255,5 @@ console.log("[build] Obfuscation disabled (plain source code).");
 
 await Promise.all([
     createPackage("dist/desktop", "dist/desktop.asar"),
-    createPackage("dist/VibeCord", "dist/VibeCord.asar"),
+    createPackage("dist/vibecord", "dist/vibecord.asar"),
 ]);

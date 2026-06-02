@@ -57,18 +57,18 @@
             "@webpack/wreq.d": [
                 "./webpack/wreq.d"
             ],
-            "@VibeCordplugins/*": [
-                "./VibeCordplugins/*"
+            "@vibecordplugins/*": [
+                "./vibecordplugins/*"
             ],
             "main/*": [
-                "./VibeCord/main/*"
+                "./vibecord/main/*"
             ],
             "shared/*": [
-                "./VibeCord/shared/*",
+                "./vibecord/shared/*",
                 "./shared/*"
             ],
             "renderer/*": [
-                "./VibeCord/renderer/*"
+                "./vibecord/renderer/*"
             ]
         },
         "plugins": [

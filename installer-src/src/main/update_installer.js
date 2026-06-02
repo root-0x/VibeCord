@@ -13,7 +13,7 @@ const getJSON = phin.defaults({
 
 /* eslint-disable no-console */
 export default async function () {
-    const downloadUrl = `https://git.${domain}/api/v1/repos/VibeCord/VibeCord/releases/latest`;
+    const downloadUrl = `https://git.${domain}/api/v1/repos/vibecord/vibecord/releases/latest`;
     console.info(`VibeCord Installer ${version}`);
 
     try {

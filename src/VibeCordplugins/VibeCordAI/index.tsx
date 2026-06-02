@@ -74,7 +74,7 @@ interface Message {
     attachments?: Attachment[];
 }
 
-const DS_KEY = "VibeCord-ai-history";
+const DS_KEY = "vibecord-ai-history";
 
 // Discord Actions
 
@@ -766,7 +766,7 @@ function VibeCordAINavButton({ selected }: { selected?: boolean; }) {
 
 export default definePlugin({
     name: "VibeCordAI",
-    enabledByDefault: false,
+    enabledByDefault: true,
     description: "AI Chat (Groq) integrated in Discord. Replaces 'Shop' in the DM panel.",
     authors: [{ name: "VibeCord", id: 0n }],
     settings,

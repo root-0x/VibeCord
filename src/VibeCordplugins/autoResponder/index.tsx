@@ -10,7 +10,7 @@ import definePlugin, { OptionType } from "@utils/types";
 import { findByPropsLazy } from "@webpack";
 import { ChannelStore, React,RestAPI, UserStore } from "@webpack/common";
 
-import { getGroqKey,groqChat } from "../VibeCordAI/groqManager";
+import { getGroqKey,groqChat } from "../vibecordAI/groqManager";
 
 const MessageStore = findByPropsLazy("getMessages");
 
@@ -290,7 +290,7 @@ export default definePlugin({
     description: "Automatically reply to DMs using AI to match your writing style.",
     authors: [{ name: "VibeCord", id: 0n }],
     settings,
-    enabledByDefault: false,
+    enabledByDefault: true,
     chatBarButton: {
         icon: KeyboardIcon,
         render: AutoResponderButton,

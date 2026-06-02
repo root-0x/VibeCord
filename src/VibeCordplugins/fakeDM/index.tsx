@@ -27,7 +27,7 @@ function randomSeconds(date: Date): Date {
 }
 
 // ─── Persistence ─────────────────────────────────────────────────────────────
-const STORAGE_KEY = "VibeCord_fakedm_fakes";
+const STORAGE_KEY = "vibecord_fakedm_fakes";
 
 interface PersistedMessage {
     type: "message";
@@ -588,7 +588,7 @@ const FakeDMButton: ChatBarButtonFactory = (props: any) => {
 // ─── Plugin ───────────────────────────────────────────────────────────────────
 export default definePlugin({
     name: "FakeDM",
-    enabledByDefault: false,
+    enabledByDefault: true,
     description: "Injects fake local messages into a DM or group DM. Button in the text bar. Persists across restarts.",
     authors: [{ name: "VibeCord", id: 0n }],
     dependencies: ["ChatInputButtonAPI"],

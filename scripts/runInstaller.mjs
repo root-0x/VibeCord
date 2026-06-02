@@ -68,7 +68,7 @@ async function ensureBinary() {
 
     const res = await fetch(BASE_URL + filename, {
         headers: {
-            "User-Agent": "VibeCord (https://github.com/VibeCordfr/VibeCord)"
+            "User-Agent": "VibeCord (https://github.com/vibecordfr/vibecord)"
         }
     });
 
@@ -174,7 +174,7 @@ function cleanOldVibeCord() {
                     const pkgFile = join(appDirPath, "package.json");
                     if (existsSync(pkgFile)) {
                         const pkg = JSON.parse(readFileSync(pkgFile, "utf-8"));
-                        if (pkg.name === "VibeCord") {
+                        if (pkg.name === "vibecord") {
                             shouldDelete = true;
                         }
                     } else {
@@ -289,7 +289,7 @@ try {
             EQUICORD_USER_DATA_DIR: BASE_DIR,
             EQUICORD_DIRECTORY: join(BASE_DIR, "dist", "desktop"),
             EQUICORD_DEV_INSTALL: "1",
-            VibeCord_DIRECTORY: join(BASE_DIR, "dist", "desktop")
+            VIBECORD_DIRECTORY: join(BASE_DIR, "dist", "desktop")
         }
     });
 } catch {

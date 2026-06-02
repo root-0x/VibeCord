@@ -53,26 +53,26 @@ await Promise.all([
     // Main process
     createContext({
         ...NodeCommonOpts,
-        entryPoints: ["src/VibeCord/main/index.ts"],
+        entryPoints: ["src/vibecord/main/index.ts"],
         outfile: "dist/js/main.js",
         footer: { js: "//# sourceURL=VesktopMain" }
     }),
     // Preloads
     createContext({
         ...NodeCommonOpts,
-        entryPoints: ["src/VibeCord/preload/index.ts"],
+        entryPoints: ["src/vibecord/preload/index.ts"],
         outfile: "dist/js/preload.js",
         footer: { js: "//# sourceURL=VesktopPreload" }
     }),
     createContext({
         ...NodeCommonOpts,
-        entryPoints: ["src/VibeCord/preload/splash.ts"],
+        entryPoints: ["src/vibecord/preload/splash.ts"],
         outfile: "dist/js/splashPreload.js",
         footer: { js: "//# sourceURL=VesktopSplashPreload" }
     }),
     createContext({
         ...NodeCommonOpts,
-        entryPoints: ["src/VibeCord/preload/updater.ts"],
+        entryPoints: ["src/vibecord/preload/updater.ts"],
         outfile: "dist/js/updaterPreload.js",
         footer: { js: "//# sourceURL=VesktopUpdaterPreload" }
     }),
@@ -80,14 +80,14 @@ await Promise.all([
     createContext({
         ...CommonOpts,
         globalName: "Equibop",
-        entryPoints: ["src/VibeCord/renderer/index.ts"],
+        entryPoints: ["src/vibecord/renderer/index.ts"],
         outfile: "dist/js/renderer.js",
         format: "iife",
         inject: ["./scripts/build/injectReact.mjs"],
         jsxFactory: "VencordCreateElement",
         jsxFragment: "VencordFragment",
         external: ["@VibeCord/types/*", "@vibecord/types/*"],
-        plugins: [vencordDep, includeDirPlugin("patches", "src/VibeCord/renderer/patches")],
+        plugins: [vencordDep, includeDirPlugin("patches", "src/vibecord/renderer/patches")],
         footer: { js: "//# sourceURL=VesktopRenderer" }
     })
 ]);

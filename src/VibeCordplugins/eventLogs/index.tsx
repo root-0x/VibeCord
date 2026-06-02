@@ -82,7 +82,7 @@ const unreadLogEntries = new Set<LogEntry>();
 
 function loadPersistLogs() {
     try {
-        const s = localStorage.getItem("VibeCord_logs");
+        const s = localStorage.getItem("vibecord_logs");
         if (s) {
             const parsed = JSON.parse(s);
             if (Array.isArray(parsed)) {
@@ -96,7 +96,7 @@ function loadPersistLogs() {
 function savePersistLogs() {
     try {
         const toSave = logs.filter(l => PERSISTENT_TYPES.has(l.type));
-        localStorage.setItem("VibeCord_logs", JSON.stringify(toSave));
+        localStorage.setItem("vibecord_logs", JSON.stringify(toSave));
     } catch { }
 }
 
@@ -494,7 +494,7 @@ function LogsModal({ rootProps }: { rootProps: any; }) {
             const url = URL.createObjectURL(blob);
             const a = document.createElement("a");
             a.href = url;
-            a.download = `VibeCord_logs_${new Date().toISOString().slice(0, 10)}.txt`;
+            a.download = `vibecord_logs_${new Date().toISOString().slice(0, 10)}.txt`;
             a.click();
             URL.revokeObjectURL(url);
             showToast(t("Logs saved!"), Toasts.Type.SUCCESS);
@@ -798,7 +798,7 @@ function subscribeToEvents() {
 
 export default definePlugin({
     name: "EventLogs",
-    enabledByDefault: false,
+    enabledByDefault: true,
     description: "Logs: deleted/edited messages, voice, friends, servers.",
     authors: [{ name: "VibeCord", id: 0n }],
     dependencies: ["HeaderBarAPI"],
@@ -809,11 +809,11 @@ export default definePlugin({
             if (vcId) myVoiceChannelId = vcId;
         } catch { }
         loadPersistLogs();
-        addHeaderBarButton("VibeCord-event-logs", () => <LogsButton />, 7);
+        addHeaderBarButton("vibecord-event-logs", () => <LogsButton />, 7);
         subscribeToEvents();
     },
     stop() {
-        removeHeaderBarButton("VibeCord-event-logs");
+        removeHeaderBarButton("vibecord-event-logs");
         unsubs.forEach(fn => fn()); unsubs = [];
         if (flushTimer !== null) { clearTimeout(flushTimer); flushTimer = null; }
         logs = []; msgCache.clear(); prevVS.clear(); updateListeners.clear();

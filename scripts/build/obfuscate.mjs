@@ -19,7 +19,7 @@ const DESKTOP_JS_FILES = [
     "dist/js/renderer.js",
 ];
 
-// dist/desktop/ and dist/VibeCord/ → build.mjs (vencord asar)
+// dist/desktop/ and dist/vibecord/ → build.mjs (vencord asar)
 const ASAR_JS_FILES = [
     "patcher.js",
     "preload.js",
@@ -85,7 +85,7 @@ export async function obfuscateDistJs() {
 // ─── Export: for build.mjs ───────────────────────────────────────────────────
 /**
  * Obfuscates .js files in a dist/ directory before createPackage() into .asar.
- * @param {string} dir  e.g. "dist/desktop" or "dist/VibeCord"
+ * @param {string} dir  e.g. "dist/desktop" or "dist/vibecord"
  */
 export async function obfuscateDir(dir) {
     console.log(`\n[obfuscate] === Obfuscation ${dir}/ ===`);

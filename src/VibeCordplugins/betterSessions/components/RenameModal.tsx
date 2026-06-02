@@ -17,8 +17,8 @@
 */
 
 import { Heading,HeadingTertiary } from "@components/Heading";
-import { SessionInfo } from "@VibeCordplugins/betterSessions/types";
-import { getDefaultName, savedSessionsCache, saveSessionsToDataStore } from "@VibeCordplugins/betterSessions/utils";
+import { SessionInfo } from "@vibecordplugins/betterSessions/types";
+import { getDefaultName, savedSessionsCache, saveSessionsToDataStore } from "@vibecordplugins/betterSessions/utils";
 import { ModalContent, ModalFooter, ModalHeader, ModalProps, ModalRoot } from "@utils/modal";
 import { Button, React, TextInput } from "@webpack/common";
 import { KeyboardEvent } from "react";

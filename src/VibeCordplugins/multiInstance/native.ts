@@ -8,7 +8,7 @@ import { app, BrowserWindow, ipcMain,screen, session } from "electron";
 import { existsSync,mkdirSync, writeFileSync } from "fs";
 import { join } from "path";
 
-import { registerMediaPermissionsForSession } from "../../VibeCord/main/mediaPermissions";
+import { registerMediaPermissionsForSession } from "../../vibecord/main/mediaPermissions";
 
 const openWindows = new Map<string, BrowserWindow>();
 
@@ -99,7 +99,7 @@ function registerWindowControlIpc(win: BrowserWindow): () => void {
 
 function createTokenPreload(token: string): string {
     // Dossier temporaire dans userData
-    const dir = join(app.getPath("userData"), "VibeCord-mi-preloads");
+    const dir = join(app.getPath("userData"), "vibecord-mi-preloads");
     mkdirSync(dir, { recursive: true });
 
     const safeToken = JSON.stringify(token); // échappe proprement le token
@@ -111,7 +111,7 @@ function createTokenPreload(token: string): string {
     const TOKEN = ${safeToken};
     try {
         // Définit le token dans localStorage
-        Object.defineProperty(window, '__VibeCord_token', { value: TOKEN, writable: false });
+        Object.defineProperty(window, '__vibecord_token', { value: TOKEN, writable: false });
 
         // Patch localStorage.getItem pour toujours retourner le token si demandé
         const _origGetItem = Storage.prototype.getItem;
@@ -177,7 +177,7 @@ export async function openInstanceWindow(
 
         // ID unique par instance - Windows groupe les fenetres par AppUserModelId
         // En donnant un ID different a chaque fenetre, elles ne se regroupent pas
-        const uniqueAppId = `VibeCord.instance.${userId}.${Date.now()}`;
+        const uniqueAppId = `vibecord.instance.${userId}.${Date.now()}`;
 
         // Icone : rotation 1→2→3→4→5→1→... depuis multi-instance-icons/
         let currentIconPath = "";
@@ -187,7 +187,7 @@ export async function openInstanceWindow(
         iconCounter = iconCounter >= 5 ? 1 : iconCounter + 1;
 
         // Session Electron isolee par userId
-        const partition = `persist:VibeCord-mi-${userId}`;
+        const partition = `persist:vibecord-mi-${userId}`;
         const ses = session.fromPartition(partition, { cache: true });
 
         ses.webRequest.onHeadersReceived((details, callback) => {
@@ -266,7 +266,7 @@ export async function openInstanceWindow(
                     } catch(e) {}
                     try {
                         // Coupe la connexion gateway Discord
-                        const ws = window.__VibeCord_GW_WS__;
+                        const ws = window.__VIBECORD_GW_WS__;
                         if (ws && ws.readyState <= 1) ws.close(4000, 'window_close');
                     } catch(e) {}
                 })();
@@ -326,7 +326,7 @@ export async function openInstanceWindow(
 // ─────────────────────────────────────────────────────────────────────────────
 // Fenetres « groupées » — meme groupe que VibeCord dans la barre des taches
 // Principe : on ne touche PAS a setAppDetails => la fenetre herite de l'AppId
-// du processus principal (com.VibeCord.app), Windows la groupe automatiquement
+// du processus principal (com.vibecord.app), Windows la groupe automatiquement
 // ─────────────────────────────────────────────────────────────────────────────
 
 const openGroupedWindows = new Map<string, BrowserWindow>();
@@ -347,7 +347,7 @@ export async function openInstanceWindowGrouped(
         }
 
         // Session isolee par userId
-        const partition = `persist:VibeCord-mi-${userId}`;
+        const partition = `persist:vibecord-mi-${userId}`;
         const ses = session.fromPartition(partition, { cache: true });
 
         ses.webRequest.onHeadersReceived((details, callback) => {
@@ -408,7 +408,7 @@ export async function openInstanceWindowGrouped(
                         for (const r of regs) await r.unregister();
                     } catch(e) {}
                     try {
-                        const ws = window.__VibeCord_GW_WS__;
+                        const ws = window.__VIBECORD_GW_WS__;
                         if (ws && ws.readyState <= 1) ws.close(4000, 'window_close');
                     } catch(e) {}
                 })();

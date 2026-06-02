@@ -7,7 +7,7 @@
 import { Devs } from "@utils/constants";
 import definePlugin from "@utils/types";
 
-const STYLE_ID = "VibeCord-hide-native-buttons";
+const STYLE_ID = "vibecord-hide-native-buttons";
 
 const CSS = `
 /* ── VibeCord : suppression boutons natifs Discord non désirés ── */

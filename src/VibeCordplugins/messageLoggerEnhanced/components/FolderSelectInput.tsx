@@ -18,8 +18,8 @@
 
 import { Button } from "@components/Button";
 import { Heading } from "@components/Heading";
-import { cl, Native, settings } from "@VibeCordplugins/messageLoggerEnhanced/index";
-import { DEFAULT_IMAGE_CACHE_DIR } from "@VibeCordplugins/messageLoggerEnhanced/utils/constants";
+import { cl, Native, settings } from "@vibecordplugins/messageLoggerEnhanced/index";
+import { DEFAULT_IMAGE_CACHE_DIR } from "@vibecordplugins/messageLoggerEnhanced/utils/constants";
 import { copyWithToast } from "@utils/discord";
 import { classes } from "@utils/misc";
 import { findCssClassesLazy } from "@webpack";

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Vencord, a Discord client mod
  * Copyright (c) 2026 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
@@ -9,5 +9,5 @@ import { join } from "path";
 
 // this is in a separate file to avoid circular dependencies
 export const VENCORD_DIR = app.isPackaged
-    ? join(process.resourcesPath, "VibeCord.asar")
-    : join(__dirname, "..", "..", "..", "dist", "VibeCord.asar");
+    ? join(process.resourcesPath, "vibecord.asar")
+    : join(__dirname, "..", "..", "..", "dist", "vibecord.asar");

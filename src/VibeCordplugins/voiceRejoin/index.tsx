@@ -52,7 +52,7 @@ export default definePlugin({
     name: "VoiceRejoin",
     description: "Rejoins DM/Server call automatically when restarting Discord.",
     authors: [EquicordDevs.omaw, EquicordDevs.keircn],
-    enabledByDefault: false,
+    enabledByDefault: true,
     settings,
 
     flux: {

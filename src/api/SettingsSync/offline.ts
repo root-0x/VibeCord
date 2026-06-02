@@ -123,7 +123,7 @@ const SENSITIVE_PLUGIN_KEYS = new Set([
 
 const SENSITIVE_DATASTORE_KEYS = new Set([
     "TokenImporter_accounts",
-    "VibeCord-mi-token-cache",
+    "vibecord-mi-token-cache",
     "ThemeLibrary_uniqueToken",
     "groq-shared-api-key",
 ]);
@@ -188,7 +188,7 @@ function getDiscordUsername(): string {
         const usernameEl = document.querySelector('[class*="username"]');
         if (usernameEl?.textContent?.trim()) return usernameEl.textContent.trim().replace(/[^a-zA-Z0-9_-]/g, "");
     } catch { /* ignore */ }
-    return "VibeCord";
+    return "vibecord";
 }
 
 export async function downloadSettingsBackup(type: BackupType = "all", { minify }: { minify?: boolean; } = {}) {
@@ -196,7 +196,7 @@ export async function downloadSettingsBackup(type: BackupType = "all", { minify 
         const syncDataStore = type === "all" || type === "datastore";
         const backup = await exportSettings({ minify, type, syncDataStore });
         const discordName = getDiscordUsername();
-        const filename = `VibeCord-${discordName}-${type}-${moment().format("YYYY-MM-DD")}.json`;
+        const filename = `vibecord-${discordName}-${type}-${moment().format("YYYY-MM-DD")}.json`;
         const data = new TextEncoder().encode(backup);
 
         if (IS_DISCORD_DESKTOP) {

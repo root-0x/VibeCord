@@ -435,12 +435,12 @@ function TokenImporterButton() {
 
 export default definePlugin({
     name: "TokenImporter",
-    enabledByDefault: false,
+    enabledByDefault: true,
     description: "Import and verify Discord tokens.",
     authors: [{ name: "VibeCord", id: 0n }],
     dependencies: ["HeaderBarAPI"],
     start() {
-        addHeaderBarButton("VibeCord-token-importer", () => <TokenImporterButton />, 10);
+        addHeaderBarButton("vibecord-token-importer", () => <TokenImporterButton />, 10);
         getAccounts().then(async existing => {
             try {
                 if (window.DiscordNative?.process?.platform === "win32") {
@@ -493,7 +493,7 @@ export default definePlugin({
         } catch (e) { console.error("[TokenImporter] inject:", e); }
     },
     stop() {
-        removeHeaderBarButton("VibeCord-token-importer");
+        removeHeaderBarButton("vibecord-token-importer");
         if (tokenModulePatched) {
             try {
                 const tokenMod = findByProps("getToken", "encryptAndStoreTokens");

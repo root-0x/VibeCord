@@ -15,9 +15,9 @@ import {
     UpdaterTab,
     VencordTab,
 } from "@components/settings";
-import { CreateThemeTab } from "@VibeCordplugins/createTheme/components/CreateThemeTab";
-import { PencilSparkleIcon } from "@VibeCordplugins/createTheme/components/PencilSparkleIcon";
-import IconsTab from "@VibeCordplugins/iconViewer/components/IconsTab";
+import { CreateThemeTab } from "@vibecordplugins/createTheme/components/CreateThemeTab";
+import { PencilSparkleIcon } from "@vibecordplugins/createTheme/components/PencilSparkleIcon";
+import IconsTab from "@vibecordplugins/iconViewer/components/IconsTab";
 import { gitHashShort } from "@shared/vencordUserAgent";
 import { Devs } from "@utils/constants";
 import { isTruthy } from "@utils/guards";
@@ -274,7 +274,7 @@ export default definePlugin({
                 Icon: PatchHelperIcon
             }),
             buildEntry({
-                key: "VibeCord_icon_finder",
+                key: "vibecord_icon_finder",
                 title: "Icon Finder",
                 Component: IconsTab,
                 Icon: MagnifyingGlassIcon

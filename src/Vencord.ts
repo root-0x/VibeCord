@@ -127,10 +127,10 @@ async function syncSettings() {
 let notifiedForUpdatesThisSession = false;
 
 function showGreenUpdateBanner() {
-    if (document.getElementById("VibeCord-core-updater-root")) return;
+    if (document.getElementById("vibecord-core-updater-root")) return;
 
     const banner = document.createElement("div");
-    banner.id = "VibeCord-core-updater-root";
+    banner.id = "vibecord-core-updater-root";
     Object.assign(banner.style, {
         position: "fixed",
         top: "0", left: "0", right: "0",

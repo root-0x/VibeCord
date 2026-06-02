@@ -14,7 +14,7 @@ import { AddonCard } from "@components/settings";
 import { ExcludedReasons, PluginDependencyList } from "@components/settings/tabs/plugins";
 import { PluginCard } from "@components/settings/tabs/plugins/PluginCard";
 import { TooltipContainer } from "@components/TooltipContainer";
-import { EQUIBOT_USER_ID, VibeCord_BOT_USER_ID } from "@utils/constants";
+import { EQUIBOT_USER_ID, VIBECORD_BOT_USER_ID } from "@utils/constants";
 import { isEquicordGuild, isEquicordSupport } from "@utils/misc";
 import { Message } from "@vencord/discord-types";
 import { showToast, Tooltip, useMemo } from "@webpack/common";
@@ -141,7 +141,7 @@ export const PluginCards = ErrorBoundary.wrap(function PluginCards({ message }: 
         );
     });
 
-    // Process components — Equibot (equicord.org / vencord.dev)
+    // Process components â€” Equibot (equicord.org / vencord.dev)
     const components = (message.components?.[0] as any)?.components;
     if (message.author.id === EQUIBOT_USER_ID && components?.length >= 4) {
         const description = components[1]?.content;
@@ -166,14 +166,14 @@ export const PluginCards = ErrorBoundary.wrap(function PluginCards({ message }: 
         }
     }
 
-    // Process components — VibeCord Bot (github.com/root-0x/VibeCord, Component v2 Container format)
-    if (message.author.id === VibeCord_BOT_USER_ID) {
+    // Process components â€” VibeCord Bot (vibecord.ru, Component v2 Container format)
+    if (message.author.id === VIBECORD_BOT_USER_ID) {
         const containerComponents = (message.components?.[0] as any)?.components;
         if (containerComponents?.length >= 3) {
             // Find ActionRow by presence of nested components (same pattern as Equibot check above)
             const actionRow = containerComponents.find((c: any) => c?.components);
             const pluginUrl = actionRow?.components?.[0]?.url;
-            if (pluginUrl?.startsWith("https://github.com/root-0x/VibeCord/plugins/")) {
+            if (pluginUrl?.startsWith("https://vibecord.ru/plugins/")) {
                 const pluginNameFromUrl = decodeURIComponent(new URL(pluginUrl).pathname.split("/")[2]);
                 const pluginNameNoSpaces = pluginNameFromUrl?.toLowerCase().replace(/\s+/g, "");
                 const actualPluginName =

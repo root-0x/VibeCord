@@ -1,12 +1,12 @@
 ﻿import { React, useState, useEffect, useRef, ReactDOM, createRoot } from "@webpack/common";
 import { findByPropsLazy } from "@webpack";
-import { getGroqKey } from "../VibeCordAI/groqManager";
+import { getGroqKey } from "../vibecordAI/groqManager";
 
 const ComponentDispatch = findByPropsLazy("dispatchToLastSubscribed");
 
 const DICT_URLS = [
     "https://raw.githubusercontent.com/words/an-array-of-french-words/master/index.json",
-    "https://raw.githubusercontent.com/VibeCordoff/dicofr/refs/heads/main/dico.txt"
+    "https://raw.githubusercontent.com/vibecordoff/dicofr/refs/heads/main/dico.txt"
 ];
 
 const FALLBACK_WORDS = ["maison", "chat", "chien", "soleil", "pomme", "banane", "ordinateur", "clavier", "souris", "ecran", "table", "chaise", "fenetre", "porte", "voiture", "avion", "bateau", "train", "velo", "moto"];

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Vencord, a Discord client mod
  * Copyright (c) 2024 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
@@ -29,7 +29,7 @@ import { openModal } from "@utils/modal";
 import { relaunch } from "@utils/native";
 import { Avatar, React, Select, UserStore } from "@webpack/common";
 
-import { ContributeModal } from "../../../../VibeCord/renderer/components/ContributeModal";
+import { ContributeModal } from "../../../../vibecord/renderer/components/ContributeModal";
 import { openNotificationSettingsModal } from "./NotificationSettings";
 
 const cl = classNameFactory("vc-vencord-tab-");
@@ -121,7 +121,7 @@ function DevTeamSection() {
                 <QuickAction
                     Icon={PlanetIcon}
                     text="VibeCord Server"
-                    action={() => window.open("https://discord.gg/VibeCord", "_blank")}
+                    action={() => window.open("https://discord.gg/vibecord", "_blank")}
                 />
             </QuickActionCard>
 
@@ -150,8 +150,8 @@ function useStealthActive() {
     const [active, setActive] = React.useState(isStealthModeEnabled);
     React.useEffect(() => {
         const handler = () => setActive(isStealthModeEnabled());
-        window.addEventListener("VibeCord-stealth-change", handler);
-        return () => window.removeEventListener("VibeCord-stealth-change", handler);
+        window.addEventListener("vibecord-stealth-change", handler);
+        return () => window.removeEventListener("vibecord-stealth-change", handler);
     }, []);
     return active;
 }

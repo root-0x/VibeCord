@@ -6,7 +6,7 @@
 
 import * as DataStore from "@api/DataStore";
 import { showNotification } from "@api/Notifications";
-import { logger, themeRequest } from "@VibeCordplugins/themeLibrary/components/ThemeTab";
+import { logger, themeRequest } from "@vibecordplugins/themeLibrary/components/ThemeTab";
 import { openModal } from "@utils/modal";
 import { OAuth2AuthorizeModal, Toasts, UserStore } from "@webpack/common";
 

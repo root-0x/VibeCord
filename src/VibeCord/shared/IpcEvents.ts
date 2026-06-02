@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Vencord, a Discord client mod
  * Copyright (c) 2026 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
@@ -77,7 +77,7 @@ export const enum IpcEvents {
 
     GET_PLATFORM_SPOOF_INFO = "VCD_GET_PLATFORM_SPOOF_INFO",
 
-    // Relaunch depuis VencordNative.VibeCord.relaunch() (boutons Restart plugins)
+    // Relaunch depuis VencordNative.vibecord.relaunch() (boutons Restart plugins)
     RELAUNCH_APP = "VibeCordRelaunchApp"
 }
 

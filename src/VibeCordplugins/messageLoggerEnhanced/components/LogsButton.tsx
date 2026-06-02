@@ -18,7 +18,7 @@
 
 import { HeaderBarButton } from "@api/HeaderBar";
 import { LogIcon as LogsIcon } from "@components/Icons";
-import { cl } from "@VibeCordplugins/messageLoggerEnhanced/index";
+import { cl } from "@vibecordplugins/messageLoggerEnhanced/index";
 
 import { openLogModal } from "./LogsModal";
 

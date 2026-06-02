@@ -104,7 +104,7 @@ export function _getBadges(args: BadgeUserArgs) {
 
     const donorBadges = BadgeAPIPlugin.getDonorBadges(args.userId);
     const equicordDonorBadges = BadgeAPIPlugin.getEquicordDonorBadges(args.userId);
-    const VibeCordBadges = (BadgeAPIPlugin as any).getVibeCordBadges?.(args.userId);
+    const vibecordBadges = (BadgeAPIPlugin as any).getVibeCordBadges?.(args.userId);
 
     if (donorBadges) {
         badges.unshift(...donorBadges.map(shieldBadge));
@@ -114,8 +114,8 @@ export function _getBadges(args: BadgeUserArgs) {
         badges.unshift(...equicordDonorBadges.map(shieldBadge));
     }
 
-    if (VibeCordBadges) {
-        badges.unshift(...VibeCordBadges.map(shieldBadge));
+    if (vibecordBadges) {
+        badges.unshift(...vibecordBadges.map(shieldBadge));
     }
 
     return badges;

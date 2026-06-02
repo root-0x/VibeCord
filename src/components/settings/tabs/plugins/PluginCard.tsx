@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Vencord, a Discord client mod
  * Copyright (c) 2025 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
@@ -43,7 +43,7 @@ function useTutorialExists(pluginName: string) {
 
         let cancelled = false;
         fetch(
-            `https://git.github.com/root-0x/VibeCord/VibeCord/VibeCord-tutorials/raw/branch/main/videos/${pluginName}.mp4`,
+            `https://git.vibecord.ru/vibecord/vibecord-tutorials/raw/branch/main/videos/${pluginName}.mp4`,
             { method: "HEAD" }
         )
             .then(res => {
@@ -52,7 +52,7 @@ function useTutorialExists(pluginName: string) {
                     TUTORIAL_CACHE.set(pluginName, found);
                     setExists(found);
                     // Force le rafraÃ®chissement global pour le filtre
-                    window.dispatchEvent(new CustomEvent("VibeCord-tutorial-detected", { detail: { pluginName, found } }));
+                    window.dispatchEvent(new CustomEvent("vibecord-tutorial-detected", { detail: { pluginName, found } }));
                 }
             })
             .catch(() => {
@@ -121,7 +121,7 @@ export function PluginCard({ plugin, disabled, onRestartNeeded, onMouseEnter, on
 
     const openTutorialVideo = (e: React.MouseEvent) => {
         e.stopPropagation();
-        const videoUrl = `https://git.github.com/root-0x/VibeCord/VibeCord/VibeCord-tutorials/raw/branch/main/videos/${plugin.name}.mp4`;
+        const videoUrl = `https://git.vibecord.ru/vibecord/vibecord-tutorials/raw/branch/main/videos/${plugin.name}.mp4`;
         openModal(props => (
             <ModalRoot {...props} size={ModalSize.DYNAMIC} className="nc-tutorial-modal">
                 <ModalHeader separator={false}>

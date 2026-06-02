@@ -62,7 +62,7 @@ const settings = definePluginSettings({
     vpsPassword: {
         type: OptionType.STRING,
         description: "Password for the sync server.",
-        default: "VibeCord",
+        default: "vibecord",
         restartNeeded: true,
     },
 });
@@ -415,7 +415,7 @@ const channelContextMenuPatch: NavContextMenuPatchCallback = (children, { channe
 export default definePlugin({
     name: "ChannelWallpaper",
     authors: [Devs.rushii, Devs.Nickyux],
-    enabledByDefault: false,
+    enabledByDefault: true,
     description: "Allows for custom backgrounds for every individual channel.",
     settings,
 

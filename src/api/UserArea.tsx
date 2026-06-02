@@ -68,10 +68,10 @@ function UserAreaButtons({ props }: { props: UserAreaRenderProps; }) {
     useEffect(() => {
         const listener = () => forceUpdate(n => n + 1);
         addStealthListener(listener);
-        window.addEventListener("VibeCord-stealth-change", listener);
+        window.addEventListener("vibecord-stealth-change", listener);
         return () => {
             removeStealthListener(listener);
-            window.removeEventListener("VibeCord-stealth-change", listener);
+            window.removeEventListener("vibecord-stealth-change", listener);
         };
     }, []);
 

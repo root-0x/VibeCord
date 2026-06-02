@@ -1,5 +1,5 @@
 ﻿{
-  "name": "VibeCord-installer",
+  "name": "vibecord-installer",
   "productName": "VibeCord Installer",
   "description": "A simple standalone program which automates the installation, removal and maintenance of VibeCord.",
   "author": "VibeCord",
@@ -34,7 +34,7 @@
     "webpack-bundle-analyzer": "^4.4.0"
   },
   "build": {
-    "appId": "app.VibeCord.installer",
+    "appId": "app.vibecord.installer",
     "productName": "VibeCord",
     "copyright": "Copyright © 2026 VibeCord",
     "directories": {

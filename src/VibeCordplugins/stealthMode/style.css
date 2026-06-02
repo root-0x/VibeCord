@@ -1,16 +1,16 @@
 ﻿/* Stealth Mode - hide VibeCord plugin UI (but NOT settings access) */
 
 /* Plugin buttons: header bar, channel toolbar, chat bar, user area */
-body.VibeCord-stealth .vc-header-bar-btns,
-body.VibeCord-stealth .vc-channel-toolbar-btns,
-body.VibeCord-stealth .vc-chat-bar-btns,
-body.VibeCord-stealth .vc-user-area-btns,
+body.vibecord-stealth .vc-header-bar-btns,
+body.vibecord-stealth .vc-channel-toolbar-btns,
+body.vibecord-stealth .vc-chat-bar-btns,
+body.vibecord-stealth .vc-user-area-btns,
 
 /* Titlebar injected elements */
-body.VibeCord-stealth #VibeCord-titlebar-btn,
-body.VibeCord-stealth #VibeCord-titlebar-link-style,
+body.vibecord-stealth #vibecord-titlebar-btn,
+body.vibecord-stealth #vibecord-titlebar-link-style,
 
 /* VibeCordAI nav button */
-body.VibeCord-stealth .nai-nav-item {
+body.vibecord-stealth .nai-nav-item {
     display: none !important;
 }

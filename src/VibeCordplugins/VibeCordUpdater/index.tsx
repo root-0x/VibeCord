@@ -8,17 +8,17 @@ import definePlugin from "@utils/types";
 import { findByPropsLazy } from "@webpack";
 import { React, useEffect, useState } from "@webpack/common";
 
-// -- Config --------------------------------------------------------------------
-const REMOTE_VERSION_URL = "https://api.github.com/repos/root-0x/VibeCord/releases/latest";
+// ── Config ────────────────────────────────────────────────────────────────────
+const REMOTE_VERSION_URL = "https://git.vibecord.ru/api/v1/repos/vibecord/vibecord/releases/latest";
 
-// -- Version locale (inject�e au build via define) -----------------------------
+// ── Version locale (injectée au build via define) ─────────────────────────────
 declare const VERSION: string;
 
 function getLocalVersion(): string {
     try { return VERSION; } catch { return "0.0.0"; }
 }
 
-// -- Comparaison semver : true seulement si remote > local ---------------------
+// ── Comparaison semver : true seulement si remote > local ─────────────────────
 function isStrictlyNewer(remote: string, local: string): boolean {
     const parse = (v: string) => v.replace(/^v/, "").split(".").map(n => parseInt(n, 10) || 0);
     const r = parse(remote);
@@ -32,7 +32,7 @@ function isStrictlyNewer(remote: string, local: string): boolean {
     return false;
 }
 
-// -- �tat global ---------------------------------------------------------------
+// ── État global ───────────────────────────────────────────────────────────────
 interface UpdateInfo {
     remoteVersion: string;
     localVersion: string;
@@ -43,7 +43,7 @@ let listeners: Array<() => void> = [];
 
 function notify() { listeners.forEach(f => f()); }
 
-// -- V�rification au lancement -------------------------------------------------
+// ── Vérification au lancement ─────────────────────────────────────────────────
 async function checkForUpdates() {
     try {
         const localVersion = getLocalVersion();
@@ -65,7 +65,7 @@ async function checkForUpdates() {
     }
 }
 
-// -- Banner React --------------------------------------------------------------
+// ── Banner React ──────────────────────────────────────────────────────────────
 function UpdateBanner() {
     const [info, setInfo]       = useState<UpdateInfo | null>(pendingUpdate);
     const [dismissed, setDismissed] = useState(false);
@@ -90,25 +90,25 @@ function UpdateBanner() {
             const ipc = VencordNative?.updater;
             if (!ipc) throw new Error("VencordNative.updater not available");
 
-            // �tape 1 : fetch Gitea metadata ? stocke l'URL du zip dans le main process
+            // Étape 1 : fetch Gitea metadata → stocke l'URL du zip dans le main process
             const updateRes: { ok: boolean; value?: boolean; error?: any; } = await ipc.update();
             if (!updateRes?.ok) {
                 throw new Error(updateRes?.error?.message ?? "Update check failed");
             }
 
-            // �tape 2 : t�l�charge le zip + extrait dans dist/
-            setStatus("? Downloaded! Extracting...");
+            // Étape 2 : télécharge le zip + extrait dans dist/
+            setStatus("✓ Downloaded! Extracting...");
             const buildRes: { ok: boolean; value?: boolean; error?: any; } = await ipc.rebuild();
             if (!buildRes?.ok) {
                 const errMsg = buildRes?.error?.message ?? JSON.stringify(buildRes?.error) ?? "Installation failed";
                 throw new Error(errMsg);
             }
 
-            setStatus("? Update applied � restarting in 2s...");
+            setStatus("✓ Update applied — restarting in 2s...");
 
             setTimeout(() => {
                 try {
-                    VencordNative.VibeCord?.relaunch?.();
+                    VencordNative.vibecord?.relaunch?.();
                 } catch {
                     (window as any).DiscordNative?.app?.relaunch?.();
                     window.location.reload();
@@ -117,7 +117,7 @@ function UpdateBanner() {
         } catch (e: any) {
             console.error("[VibeCordUpdater] Update error:", e);
             const msg = e?.message ? e.message.substring(0, 120) : "Unknown error";
-            setStatus(`? ${msg}. Check your connection or restart manually.`);
+            setStatus(`❌ ${msg}. Check your connection or restart manually.`);
             setLoading(false);
         }
     }
@@ -143,7 +143,7 @@ function UpdateBanner() {
             style: { display: "flex", alignItems: "center", gap: 10, flex: 1, minWidth: 0 }
         },
             React.createElement("span", { style: { fontWeight: 700, flexShrink: 0 } },
-                `?? VibeCord ${info.remoteVersion} available!`
+                `🔔 VibeCord ${info.remoteVersion} available!`
             ),
             React.createElement("span", {
                 style: { opacity: 0.85, fontSize: 12, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }
@@ -166,7 +166,7 @@ function UpdateBanner() {
                     fontWeight: 700,
                     fontFamily: "inherit",
                 }
-            }, loading ? "..." : "? Update"),
+            }, loading ? "..." : "⬇ Update"),
             React.createElement("button", {
                 onClick: () => setDismissed(true),
                 style: {
@@ -180,19 +180,19 @@ function UpdateBanner() {
                     lineHeight: 1,
                 },
                 title: "Dismiss"
-            }, "?")
+            }, "✕")
         )
     );
 }
 
-// -- Monte la banni�re dans le DOM ---------------------------------------------
+// ── Monte la bannière dans le DOM ─────────────────────────────────────────────
 let bannerRoot: any = null;
 let bannerContainer: HTMLDivElement | null = null;
 
 function mountBanner() {
-    if (bannerContainer || document.getElementById("VibeCord-updater-root")) return;
+    if (bannerContainer || document.getElementById("vibecord-updater-root")) return;
     bannerContainer = document.createElement("div");
-    bannerContainer.id = "VibeCord-updater-root";
+    bannerContainer.id = "vibecord-updater-root";
     document.body.appendChild(bannerContainer);
 
     const ReactDOM = findByPropsLazy("createRoot", "render");
@@ -215,10 +215,10 @@ function unmountBanner() {
     bannerRoot = null;
 }
 
-// -- Plugin --------------------------------------------------------------------
+// ── Plugin ────────────────────────────────────────────────────────────────────
 export default definePlugin({
     name: "VibeCordUpdater",
-    enabledByDefault: false,
+    enabledByDefault: true,
     description: "Shows a banner when a new VibeCord version is available. Click Update to install.",
     authors: [{ name: "VibeCord", id: 0n }],
 

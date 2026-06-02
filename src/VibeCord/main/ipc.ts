@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Vencord, a Discord client mod
  * Copyright (c) 2026 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
@@ -101,7 +101,7 @@ handle(IpcEvents.RELAUNCH, async () => {
     app.exit();
 });
 
-// Handler pour VencordNative.VibeCord.relaunch() — utilisé par les boutons Restart dans les settings plugins
+// Handler pour VencordNative.vibecord.relaunch() — utilisé par les boutons Restart dans les settings plugins
 handle(IpcEvents.RELAUNCH_APP, async () => {
     setBadgeCount(0);
 

@@ -372,7 +372,7 @@ async function cloneServer(
                     try {
                         webhook = await apiCall("post", `/channels/${targetChId}/webhooks`, {
                             name: "ServerCloner",
-                            enabledByDefault: false
+                            enabledByDefault: true
                         });
                     } catch (e: any) {
                         log({ text: `  Webhook creation error for channel ${targetChId}: ${e?.message || e}`, type: "err" });
@@ -673,7 +673,7 @@ const settings = definePluginSettings({
 
 export default definePlugin({
     name: "ServerCloner",
-    enabledByDefault: false,
+    enabledByDefault: true,
     description: "Clone an entire server (channels, roles, permissions, icon, emojis, embeds) to a server where you have ADMIN permission. Can be opened from server context menu.",
     authors: [{ name: "VibeCord", id: 0n }],
     settings,

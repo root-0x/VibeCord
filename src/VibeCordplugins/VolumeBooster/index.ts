@@ -52,7 +52,7 @@ export default definePlugin({
     authors: [Devs.Nuckyz, Devs.sadan],
     description: "Allows you to set the user and stream volume above the default maximum",
     tags: ["Voice", "Utility"],
-    enabledByDefault: false,
+    enabledByDefault: true,
     required: true,
     settings,
 

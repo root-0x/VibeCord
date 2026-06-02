@@ -5,7 +5,7 @@
  */
 
 import { isPluginEnabled, plugins } from "@api/PluginManager";
-import { toggleEnabled } from "@VibeCordplugins/equicordHelper/utils";
+import { toggleEnabled } from "@vibecordplugins/equicordHelper/utils";
 import { openViewScheduledModal } from "@plugins/scheduledMessages/components/ViewScheduledModal";
 import { Toasts } from "@webpack/common";
 

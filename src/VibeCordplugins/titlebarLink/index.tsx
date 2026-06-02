@@ -12,7 +12,7 @@ const Native = VencordNative.pluginHelpers.TitlebarLink as PluginNative<typeof i
 const TARGET_URL = `https://${domain}`;
 
 const CSS = `
-#VibeCord-titlebar-btn {
+#vibecord-titlebar-btn {
     position: fixed;
     top: 0;
     left: 50%;
@@ -35,15 +35,15 @@ const CSS = `
 `;
 
 function inject() {
-    if (document.getElementById("VibeCord-titlebar-btn")) return;
+    if (document.getElementById("vibecord-titlebar-btn")) return;
 
     const style = document.createElement("style");
-    style.id = "VibeCord-titlebar-link-style";
+    style.id = "vibecord-titlebar-link-style";
     style.textContent = CSS;
     document.head.appendChild(style);
 
     const btn = document.createElement("div");
-    btn.id = "VibeCord-titlebar-btn";
+    btn.id = "vibecord-titlebar-btn";
 
     btn.addEventListener("click", () => {
         Native.openUrl(TARGET_URL);
@@ -53,13 +53,13 @@ function inject() {
 }
 
 function remove() {
-    document.getElementById("VibeCord-titlebar-btn")?.remove();
-    document.getElementById("VibeCord-titlebar-link-style")?.remove();
+    document.getElementById("vibecord-titlebar-btn")?.remove();
+    document.getElementById("vibecord-titlebar-link-style")?.remove();
 }
 
 export default definePlugin({
     name: "TitlebarLink",
-    enabledByDefault: false,
+    enabledByDefault: true,
     description: `Click on the central Discord title to open ${domain}`,
     authors: [{ name: "VibeCord", id: 0n }],
     required: true,

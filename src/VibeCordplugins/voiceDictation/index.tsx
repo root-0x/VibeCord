@@ -4,7 +4,7 @@ import { showApiKeyWarning } from "@utils/apiKeyWarning";
 import definePlugin, { OptionType } from "@utils/types"; // Import conservé mais syntaxe d'export en bas sécurisée
 import { ComponentDispatch, MediaEngineStore, React, showToast, Toasts, useEffect, useRef, useState } from "@webpack/common";
 
-import { getGroqKey } from "../VibeCordAI/groqManager";
+import { getGroqKey } from "../vibecordAI/groqManager";
 
 const settings = definePluginSettings({
     language: {
@@ -354,7 +354,7 @@ const VoiceDictationButton: ChatBarButtonFactory = ({ isMainChat }) => {
 // Modification ici pour contourner le bug d'esbuild avec le mot-clé default direct
 const pluginObj = definePlugin({
     name: "VoiceDictation",
-    enabledByDefault: false,
+    enabledByDefault: true,
     description: "Real-time voice dictation via Groq Whisper (free). API key shared with VibeCordAI.",
     authors: [{ name: "User", id: 0n }],
     dependencies: ["ChatInputButtonAPI"],

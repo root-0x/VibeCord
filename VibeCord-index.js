@@ -10,8 +10,8 @@ const { app } = require("electron");
 // ── CRITIQUE : userData = dossier VibeCord pour les settings/plugins
 // Mais on garde le cache Discord (images, données serveurs) du vrai Discord
 // pour éviter de devoir tout retélécharger à chaque installation.
-const VibeCordData = path.join(app.getPath("appData"), "VibeCord");
-app.setPath("userData", VibeCordData);
+const vibecordData = path.join(app.getPath("appData"), "VibeCord");
+app.setPath("userData", vibecordData);
 
 // FIX BUG SALONS INVISIBLES : NE PAS partager le cache HTTP de Discord stable.
 // Le cache de Discord stable contient des données de session/permissions calculées
@@ -91,7 +91,7 @@ app.once("ready", () => {
 // Quand Discord crash pendant une écriture localStorage, le fichier LevelDB peut se
 // corrompre et géler le renderer au démarrage suivant.
 try {
-    const lsPath = path.join(VibeCordData, "Local Storage", "leveldb");
+    const lsPath = path.join(vibecordData, "Local Storage", "leveldb");
     if (fs.existsSync(lsPath)) {
         // Détecter la corruption : fichier LOCK verrouillé ou fichier LOG manquant
         const lockFile = path.join(lsPath, "LOCK");
@@ -124,7 +124,7 @@ try {
     }
 } catch (e) { console.warn("[VibeCord] LevelDB check failed:", e.message); }
 
-// Modules bundlés dans VibeCord-dist/modules/
+// Modules bundlés dans vibecord-dist/modules/
 const bundledModulesPath = path.join(path.dirname(process.execPath), "modules");
 const moduleDataPath = path.join(app.getPath("appData"), "discord", "module_data");
 
@@ -152,7 +152,7 @@ function addGlobalPath(p) {
     try { if (fs.existsSync(p) && !Module.globalPaths.includes(p)) Module.globalPaths.push(p); } catch (_) { }
 }
 
-// Priorité aux modules bundlés (portables, dans VibeCord-dist/modules/)
+// Priorité aux modules bundlés (portables, dans vibecord-dist/modules/)
 addGlobalPath(bundledModulesPath);
 
 // Ajout des modules natifs Discord (discord_voice, discord_krisp, etc.)

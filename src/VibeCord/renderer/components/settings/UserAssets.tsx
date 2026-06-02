@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Vencord, a Discord client mod
  * Copyright (c) 2026 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
@@ -87,7 +87,7 @@ function Asset({ asset }: { asset: UserAssetType }) {
             <div className="vcd-user-assets-asset">
                 <img
                     className="vcd-user-assets-image"
-                    src={`VibeCord://assets/${asset}?v=${version}`}
+                    src={`vibecord://assets/${asset}?v=${version}`}
                     alt=""
                     style={{ imageRendering }}
                 />

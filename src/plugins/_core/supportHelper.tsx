@@ -27,7 +27,7 @@ import { Flex } from "@components/Flex";
 import { Link } from "@components/Link";
 import { Paragraph } from "@components/Paragraph";
 import { openSettingsTabModal, UpdaterTab } from "@components/settings";
-import { platformName } from "@VibeCordplugins/equicordHelper/utils";
+import { platformName } from "@vibecordplugins/equicordHelper/utils";
 import { gitHash, gitHashShort } from "@shared/vencordUserAgent";
 import { CONTRIB_ROLE_ID, Devs, DONOR_ROLE_ID, EQUICORD_TEAM, GUILD_ID, SUPPORT_CHANNEL_IDS, VC_CONTRIB_ROLE_ID, VC_DONOR_ROLE_ID, VC_GUILD_ID, VC_REGULAR_ROLE_ID, VENCORD_CONTRIB_ROLE_ID } from "@utils/constants";
 import { sendMessage } from "@utils/discord";
@@ -508,13 +508,13 @@ export default definePlugin({
         ];
 
         // Groupe 2 : Message "VibeCord developers"
-        const VibeCordGroupIds = [
+        const vibecordGroupIds = [
             "1086802921984893038", "1172305545554825259", "407134577748869122",
             "1098251321682968597", "587626543874834463", "1188391631662108752"
         ];
 
         const isOriginalDev = originalDevIds.includes(userId);
-        const isVibeCordGroup = VibeCordGroupIds.includes(userId);
+        const isVibeCordGroup = vibecordGroupIds.includes(userId);
 
         if (!isOriginalDev && !isVibeCordGroup) return null;
         if (RelationshipStore.isFriend(userId) || isAnyPluginDev(UserStore.getCurrentUser()?.id)) return null;

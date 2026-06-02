@@ -17,9 +17,9 @@
 */
 
 import ErrorBoundary from "@components/ErrorBoundary";
-import { settings } from "@VibeCordplugins/imageZoom";
-import { ELEMENT_ID } from "@VibeCordplugins/imageZoom/constants";
-import { waitFor } from "@VibeCordplugins/imageZoom/utils/waitFor";
+import { settings } from "@vibecordplugins/imageZoom";
+import { ELEMENT_ID } from "@vibecordplugins/imageZoom/constants";
+import { waitFor } from "@vibecordplugins/imageZoom/utils/waitFor";
 import { classNameFactory } from "@utils/css";
 import { FluxDispatcher, useLayoutEffect, useMemo, useRef, useState } from "@webpack/common";
 

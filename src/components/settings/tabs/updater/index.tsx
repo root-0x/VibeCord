@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Vencord, a Discord client mod
  * Copyright (c) 2026 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
@@ -22,7 +22,7 @@ import { Toasts } from "@webpack/common";
 // Version locale depuis package.json (injectée au build)
 declare const VERSION: string;
 
-const REPO_URL = "https://github.com/root-0x/VibeCord";
+const REPO_URL = "https://git.vibecord.ru/vibecord/vibecord";
 
 function UpdaterTab() {
     const [checking, setChecking] = useState(false);
@@ -110,8 +110,8 @@ function UpdaterTab() {
                     <div>
                         <Span size="sm" color="text-subtle">Website</Span>
                         <div>
-                        <Link href="https://github.com/root-0x/VibeCord" style={{ fontSize: 13 }}>
-                                github.com/root-0x/VibeCord
+                            <Link href="https://vibecord.ru" style={{ fontSize: 13 }}>
+                                vibecord.ru
                             </Link>
                         </div>
                     </div>

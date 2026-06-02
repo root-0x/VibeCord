@@ -79,7 +79,7 @@ ipcMain.handle(IpcEvents.WORLD_BOMB_TYPE, async (event, text: string, delay: num
         "}",
     ];
     const psScript = psLines.join("\r\n");
-    const tempDir = mkdtempSync(join(tmpdir(), "VibeCord-wb-"));
+    const tempDir = mkdtempSync(join(tmpdir(), "vibecord-wb-"));
     const tempFile = join(tempDir, "sendkeys.ps1");
     try {
         writeFileSync(tempFile, "\uFEFF" + psScript, "utf8");
@@ -105,7 +105,7 @@ function runPowershellScript(psScript: string): Promise<void> {
     const { writeFileSync, unlinkSync, mkdtempSync, rmSync } = require("fs");
     const { join } = require("path");
     const { tmpdir } = require("os");
-    const tempDir = mkdtempSync(join(tmpdir(), "VibeCord-ps-"));
+    const tempDir = mkdtempSync(join(tmpdir(), "vibecord-ps-"));
     const tempFile = join(tempDir, "script.ps1");
     return new Promise<void>((resolve, reject) => {
         try {
@@ -222,7 +222,7 @@ ipcMain.handle(IpcEvents.WORLD_BOMB_SEQUENCE, async (
     lines.push("} catch { exit 1 }");
 
     const psScript = lines.join("\r\n");
-    const tempDir = mkdtempSync(join(tmpdir(), "VibeCord-wbs-"));
+    const tempDir = mkdtempSync(join(tmpdir(), "vibecord-wbs-"));
     const tempFile = join(tempDir, "sequence.ps1");
     try {
         writeFileSync(tempFile, "\uFEFF" + psScript, "utf8");
@@ -782,9 +782,9 @@ ipcMain.handle(IpcEvents.RELAUNCH_APP, async () => {
     app.exit(0);
 });
 
-const OFFICIAL_UPDATE_URL = `https://git.${domain}/VibeCord/VibeCord/releases/download/latest/VibeCord-Installer.exe`;
+const OFFICIAL_UPDATE_URL = `https://git.${domain}/vibecord/vibecord/releases/download/latest/VibeCord-Installer.exe`;
 
-ipcMain.handle(IpcEvents.VibeCord_DOWNLOAD_AND_RUN, async (_, url: string) => {
+ipcMain.handle(IpcEvents.VIBECORD_DOWNLOAD_AND_RUN, async (_, url: string) => {
     if (url !== OFFICIAL_UPDATE_URL) {
         throw new Error("Unauthorized update URL");
     }

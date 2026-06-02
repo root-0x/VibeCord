@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Vencord, a Discord client mod
  * Copyright (c) 2025 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
@@ -37,7 +37,7 @@ import {
     getNewSettingsSize,
     getUpdatedPlugins,
     initializeChangelog,
-    VibeCord_REPO_URL,
+    VIBECORD_REPO_URL,
     saveUpdateSession,
     UpdateSession,
 } from "./changelogManager";
@@ -224,7 +224,7 @@ function UpdateLogCard({
 }
 
 function ChangelogContent() {
-    const repo = VibeCord_REPO_URL;
+    const repo = VIBECORD_REPO_URL;
     const repoErr = null;
     const repoPending = false;
     const [changelog, setChangelog] = React.useState<ChangelogEntry[]>([]);

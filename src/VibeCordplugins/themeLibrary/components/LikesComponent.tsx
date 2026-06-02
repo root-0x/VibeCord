@@ -7,9 +7,9 @@
 import * as DataStore from "@api/DataStore";
 import { Button } from "@components/Button";
 import { Margins } from "@components/margins";
-import type { Theme, ThemeLikeProps } from "@VibeCordplugins/themeLibrary/types";
-import { isAuthorized } from "@VibeCordplugins/themeLibrary/utils/auth";
-import { LikeIcon } from "@VibeCordplugins/themeLibrary/utils/Icons";
+import type { Theme, ThemeLikeProps } from "@vibecordplugins/themeLibrary/types";
+import { isAuthorized } from "@vibecordplugins/themeLibrary/utils/auth";
+import { LikeIcon } from "@vibecordplugins/themeLibrary/utils/Icons";
 import { useEffect, useRef, useState } from "@webpack/common";
 
 import { logger, themeRequest } from "./ThemeTab";

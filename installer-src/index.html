@@ -565,7 +565,7 @@
     <div class="titlebar">
       <div class="titlebar-left">
         <img src="{{ICON_BASE64}}" class="logo-mark" />
-        <span class="titlebar-title" style="cursor: pointer;" onclick="window.VibeCord.openUrl('https://VibeCord.ru/')">VibeCord Installer</span>
+        <span class="titlebar-title" style="cursor: pointer;" onclick="window.vibecord.openUrl('https://vibecord.ru/')">VibeCord Installer</span>
         <span class="titlebar-version" id="titlebar-version">...</span>
       </div>
       <div class="titlebar-right">
@@ -576,8 +576,8 @@
           </svg>
         </button>
         <div class="titlebar-controls">
-          <button class="btn-minimize" onclick="window.VibeCord.minimizeApp()"></button>
-          <button class="btn-close" onclick="window.VibeCord.closeApp()"></button>
+          <button class="btn-minimize" onclick="window.vibecord.minimizeApp()"></button>
+          <button class="btn-close" onclick="window.vibecord.closeApp()"></button>
         </div>
       </div>
     </div>
@@ -643,13 +643,13 @@
       <div class="settings-content">
         <p class="settings-desc">Access official VibeCord links and community resources.</p>
         <div class="settings-buttons">
-          <button class="btn-setting-link btn-discord" onclick="window.VibeCord.openUrl('https://discord.gg/VibeCord')">
+          <button class="btn-setting-link btn-discord" onclick="window.vibecord.openUrl('https://discord.gg/vibecord')">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="btn-link-icon">
               <path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.02.06.03.09.02c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12z"/>
             </svg>
             <span>Join Discord Server</span>
           </button>
-          <button class="btn-setting-link btn-website" onclick="window.VibeCord.openUrl('https://VibeCord.ru')">
+          <button class="btn-setting-link btn-website" onclick="window.vibecord.openUrl('https://vibecord.ru')">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="btn-link-icon">
               <circle cx="12" cy="12" r="10"></circle>
               <line x1="2" y1="12" x2="22" y2="12"></line>
@@ -657,7 +657,7 @@
             </svg>
             <span>Official Website</span>
           </button>
-          <button class="btn-setting-link btn-github" onclick="window.VibeCord.openUrl('https://git.VibeCord.ru/VibeCord/VibeCord')">
+          <button class="btn-setting-link btn-github" onclick="window.vibecord.openUrl('https://git.vibecord.ru/vibecord/vibecord')">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="btn-link-icon">
               <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.11.82-.26.82-.577v-2.17c-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.084 1.84 1.237 1.84 1.237 1.07 1.835 2.807 1.305 3.492.998.108-.775.42-1.305.763-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.467-2.38 1.235-3.22-.123-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23.957-.266 1.98-.398 3-.403 1.02.005 2.043.137 3 .403 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.24 2.873.118 3.176.77.84 1.233 1.91 1.233 3.22 0 4.61-2.803 5.625-5.475 5.92.43.37.823 1.102.823 2.222v3.293c0 .32.218.694.825.577C20.565 21.797 24 17.298 24 12c0-6.63-5.37-12-12-12z"/>
             </svg>
@@ -667,7 +667,7 @@
           <div class="update-result" id="update-result"></div>
         </div>
       </div>
-      <div class="settings-dev-footer">dev by ahki__ (VibeCord)</div>
+      <div class="settings-dev-footer">dev by ahki__ (vibecord)</div>
     </div>
   </div>
 
@@ -717,7 +717,7 @@
       const p = input.value.trim();
       if (!p) return;
 
-      const injected = await window.VibeCord.isInjected(p);
+      const injected = await window.vibecord.isInjected(p);
       const entry = {
         name: 'Manual',
         path: p,
@@ -736,7 +736,7 @@
       setStatus('loading', 'Detecting Discord installations...');
 
       try {
-        const found = await window.VibeCord.detectDiscord();
+        const found = await window.vibecord.detectDiscord();
         discords = found || [];
       } catch(e) {
         discords = [];
@@ -762,9 +762,9 @@
         const icon = ICONS[d.name] || { emoji: 'âšª', cls: 'stable' };
         let injected = false;
         let hasThirdParty = false;
-        try { injected = await window.VibeCord.isInjected(d.path); } catch {}
+        try { injected = await window.vibecord.isInjected(d.path); } catch {}
         if (!injected) {
-          try { hasThirdParty = await window.VibeCord.hasThirdPartyMod(d.path); } catch {}
+          try { hasThirdParty = await window.vibecord.hasThirdPartyMod(d.path); } catch {}
         }
         renderCard(d, i, injected, icon.cls, hasThirdParty);
       }
@@ -845,7 +845,7 @@
 
       // Use startInject (non-blocking) + poll getInjectStatus
       // This avoids the WebView2 COM proxy 30s timeout on large downloads
-      const started = window.VibeCord.startInject(selected.path);
+      const started = window.vibecord.startInject(selected.path);
       if (!started || !started.started) {
         setLoading(false);
         setStatus('error', `Error: ${started?.error || 'Could not start inject'}`);
@@ -855,7 +855,7 @@
       // Poll every 500ms for status
       await new Promise((resolve) => {
         const interval = setInterval(() => {
-          const status = window.VibeCord.getInjectStatus();
+          const status = window.vibecord.getInjectStatus();
           if (status.state === 'done') {
             clearInterval(interval);
             resolve({ success: true });
@@ -889,7 +889,7 @@
       setStatus('loading', `Uninjecting from ${selected.name}...`);
       
       // Real C# uninjection call
-      const result = await window.VibeCord.uninject(selected.path);
+      const result = await window.vibecord.uninject(selected.path);
       
       if (result.success) {
         setLoading(true, "Completed", 100);
@@ -907,7 +907,7 @@
     // Fetch latest version from Gitea and show in titlebar badge
     async function loadLatestVersion() {
       try {
-        const res = await fetch('https://git.VibeCord.ru/api/v1/repos/VibeCord/VibeCord/releases/latest', {
+        const res = await fetch('https://git.vibecord.ru/api/v1/repos/vibecord/vibecord/releases/latest', {
           headers: { 'Accept': 'application/json' }
         });
         if (!res.ok) return;

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Vencord, a Discord client mod
  * Copyright (c) 2025 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
@@ -35,9 +35,9 @@ const LAST_SEEN_HASH_KEY = "EquicordChangelog_LastSeenHash";
 const KNOWN_PLUGINS_KEY = "EquicordChangelog_KnownPlugins";
 const KNOWN_SETTINGS_KEY = "EquicordChangelog_KnownSettings";
 const LAST_REPO_CHECK_KEY = "EquicordChangelog_LastRepoCheck";
-const GITEA_API_BASE = "https://api.github.com/repos";
-const VibeCord_RELEASES_REPO = "root-0x/VibeCord";
-const VibeCord_REPO_URL = `https://github.com/${VibeCord_RELEASES_REPO}`;
+const GITEA_API_BASE = "https://git.vibecord.ru/api/v1/repos";
+const VIBECORD_RELEASES_REPO = "vibecord/vibecord";
+const VIBECORD_REPO_URL = `https://git.vibecord.ru/${VIBECORD_RELEASES_REPO}`;
 
 type KnownPluginSettingsMap = Map<string, Set<string>>;
 
@@ -391,13 +391,13 @@ export async function getNewSettings(): Promise<Map<string, string[]>> {
     return newSettings;
 }
 
-export { VibeCord_REPO_URL };
+export { VIBECORD_REPO_URL };
 
 export async function getCommitsSinceLastSeen(
     repoUrl: string,
 ): Promise<ChangelogEntry[]> {
     // Toujours utiliser le repo VibeCord, ignorer le repoUrl d'Equicord
-    return fetchCommitsBetween(VibeCord_RELEASES_REPO, "HEAD~10", "HEAD").catch(() => []);
+    return fetchCommitsBetween(VIBECORD_RELEASES_REPO, "HEAD~10", "HEAD").catch(() => []);
 }
 
 export async function updateKnownSettings(): Promise<void> {

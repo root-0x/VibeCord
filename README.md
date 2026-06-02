@@ -1,14 +1,14 @@
 ﻿<div align="center">
-  <img src="https://VibeCord.ru/image.png" width="96" height="96" alt="VibeCord Logo">
+  <img src="https://vibecord.ru/image.png" width="96" height="96" alt="VibeCord Logo">
 
 # VibeCord
 
 **A custom Discord client built for people who actually care about how Discord runs.**
 
-[![Discord](https://img.shields.io/badge/Discord-Join%20us-5865F2?logo=discord\&logoColor=white)](https://discord.gg/VibeCord)
+[![Discord](https://img.shields.io/badge/Discord-Join%20us-5865F2?logo=discord\&logoColor=white)](https://discord.gg/vibecord)
 [![License](https://img.shields.io/badge/license-GPL%20v3-a855f7)](./LICENSE)
-[![Platform](https://img.shields.io/badge/platform-Windows-3b82f6.svg?logo=windows\&logoColor=white)](https://git.VibeCord.ru/VibeCord/VibeCord)
-[![Website](https://img.shields.io/badge/website-VibeCord.ru-5865F2?logo=googlechrome\&logoColor=white)](https://VibeCord.ru)
+[![Platform](https://img.shields.io/badge/platform-Windows-3b82f6.svg?logo=windows\&logoColor=white)](https://git.vibecord.ru/vibecord/vibecord)
+[![Website](https://img.shields.io/badge/website-vibecord.ru-5865F2?logo=googlechrome\&logoColor=white)](https://vibecord.ru)
 
 ---
 
@@ -30,7 +30,7 @@ VibeCord is a fork of Equicord, which itself builds on top of Vencord. We stripp
 
 ## Installation (Windows)
 
-1. Download **`VibeCord-install.ps1`**
+1. Download **`vibecord-install.ps1`**
 2. Right-click → **Run with PowerShell**
 3. Follow the steps, restart Discord, done.
 
@@ -51,8 +51,8 @@ npm install -g pnpm
 ### Clone & Build
 
 ```bash
-git clone https://git.VibeCord.ru/VibeCord/VibeCord.git
-cd VibeCord
+git clone https://git.vibecord.ru/vibecord/vibecord.git
+cd vibecord
 pnpm install
 pnpm build
 ```
@@ -75,7 +75,7 @@ pnpm uninject
 
 Source code:
 
-https://git.VibeCord.ru/VibeCord/VibeCord
+https://git.vibecord.ru/vibecord/vibecord
 
 ---
 

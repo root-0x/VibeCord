@@ -306,16 +306,16 @@ function VCSHeaderButton() {
 
 export default definePlugin({
     name: "VoiceChannelSearch",
-    enabledByDefault: false,
+    enabledByDefault: true,
     description: "Search and join any voice channel across all your servers.",
     authors: [{ name: "VibeCord", id: 0n }],
     dependencies: ["HeaderBarAPI"],
 
     start() {
-        addHeaderBarButton("VibeCord-voice-channel-search", () => <VCSHeaderButton />, 9);
+        addHeaderBarButton("vibecord-voice-channel-search", () => <VCSHeaderButton />, 9);
     },
     stop() {
-        removeHeaderBarButton("VibeCord-voice-channel-search");
+        removeHeaderBarButton("vibecord-voice-channel-search");
         scanCache = null;
     },
 });

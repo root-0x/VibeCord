@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import { TimerIcon } from "@VibeCordplugins/callTimer/TimerIcon";
+import { TimerIcon } from "@vibecordplugins/callTimer/TimerIcon";
 
 import { cancelScheduledStatusReset, setStatusDndForDuration } from "../../../registry";
 import type { PalettePageSpec, PaletteSuggestion } from "../types";

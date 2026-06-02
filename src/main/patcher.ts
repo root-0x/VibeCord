@@ -21,8 +21,8 @@ import electron, { app, BrowserWindowConstructorOptions, Menu, session } from "e
 import { existsSync as fsExistsSync, statSync as fsStatSync } from "original-fs";
 import { dirname, join } from "path";
 
-import { registerMediaPermissionsForSession } from "../VibeCord/main/mediaPermissions";
-// Note: VibeCordTray removed — VibeCord injects silently into Discord,
+import { registerMediaPermissionsForSession } from "../vibecord/main/mediaPermissions";
+// Note: vibecordTray removed — VibeCord injects silently into Discord,
 // Discord manages its own tray icon (same behaviour as Equicord).
 import { RendererSettings } from "./settings";
 import { patchTrayMenu } from "./trayMenu";

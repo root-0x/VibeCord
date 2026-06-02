@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Vencord, a Discord client mod
  * Copyright (c) 2026 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
@@ -37,7 +37,7 @@ export async function githubGet(endpoint: string) {
 
 export async function downloadVencordAsar() {
     await downloadFile(
-        `https://git.${domain}/VibeCord/VibeCord/releases/download/latest/VibeCord.asar`,
+        `https://git.${domain}/vibecord/vibecord/releases/download/latest/VibeCord.asar`,
         VENCORD_DIR,
         {},
         { retryOnNetworkError: true }
@@ -50,6 +50,6 @@ export function isValidVencordInstall(dir: string) {
 
 export async function ensureVencordFiles() {
     if (!existsSync(VENCORD_DIR)) {
-        console.error("Bundled VibeCord.asar not found at", VENCORD_DIR);
+        console.error("Bundled vibecord.asar not found at", VENCORD_DIR);
     }
 }

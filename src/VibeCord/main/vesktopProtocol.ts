@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Vencord, a Discord client mod
  * Copyright (c) 2026 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
@@ -10,7 +10,7 @@ import { handleVesktopAssetsProtocol } from "./userAssets";
 import { handleVesktopStaticProtocol } from "./vesktopStatic";
 
 app.whenReady().then(() => {
-    protocol.handle("VibeCord", async req => {
+    protocol.handle("vibecord", async req => {
         const url = new URL(req.url);
 
         switch (url.hostname) {
