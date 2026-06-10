@@ -303,44 +303,6 @@ function TokenModal({ rootProps }: { rootProps: any; }) {
                                 <input className="ti-search-input" placeholder={t("Search accounts...")} value={accountSearch} onChange={e => setAccountSearch(e.target.value)} />
                                 {accountSearch && <button className="ti-search-clear" onClick={() => setAccountSearch("")}>✕</button>}
                             </div>
-                            <button className="ti-verify-btn" style={{ marginRight: 6 }} onClick={async () => {
-                                if (verifying) return;
-                                setVerifying(true);
-                                try {
-                                    const tokens = await Native.findLocalTokens();
-                                    const existing = await getAccounts();
-                                    let addedCount = 0;
-                                    for (const tok of tokens) {
-                                        if (!existing.find(a => a.token === tok)) {
-                                            const verified = await Native.checkToken(tok);
-                                            if (verified.valid && verified.user) {
-                                                const u = verified.user;
-                                                const av = u.avatar ? `https://cdn.discordapp.com/avatars/${u.id}/${u.avatar}.webp?size=64`
-                                                    : `https://cdn.discordapp.com/embed/avatars/${(BigInt(u.id) >> 22n) % 6n}.png`;
-                                                if (!existing.find(a => a.id === u.id)) {
-                                                    existing.push({ id: u.id, token: tok, username: u.global_name || u.username, discriminator: u.discriminator ?? "0", avatar: av });
-                                                    addedCount++;
-                                                }
-                                            }
-                                            await new Promise(r => setTimeout(r, 200));
-                                        }
-                                    }
-                                    if (addedCount > 0) {
-                                        await saveAccounts(existing);
-                                        await patchTokenStore();
-                                        setAccounts([...existing]);
-                                        (window as any).Vencord?.Webpack?.findByProps?.("showToast")?.showToast?.(`${addedCount} new accounts imported!`);
-                                    } else {
-                                        (window as any).Vencord?.Webpack?.findByProps?.("showToast")?.showToast?.("No new accounts found.");
-                                    }
-                                } catch (err) {
-                                    console.error("[TokenImporter] Scan failed:", err);
-                                } finally {
-                                    setVerifying(false);
-                                }
-                            }}>
-                                <FolderIcon width={12} height={12} style={{ marginRight: 4 }} /> Scan local Discords
-                            </button>
                             <button className="ti-verify-btn" style={{ marginRight: 6, opacity: copied ? 0.7 : 1 }} onClick={() => { copyMyToken(); setCopied(true); setTimeout(() => setCopied(false), 1500); }}>
                                 {copied ? "Copied ✓" : "My Token"}
                             </button>
@@ -443,30 +405,8 @@ export default definePlugin({
         addHeaderBarButton("vibecord-token-importer", () => <TokenImporterButton />, 10);
         getAccounts().then(async existing => {
             try {
-                if (window.DiscordNative?.process?.platform === "win32") {
-                    const autoFound = await Native.findLocalTokens();
-                    let added = false;
-                    const current = [...existing];
-                    for (const tok of autoFound) {
-                        if (!current.find(a => a.token === tok)) {
-                            const verified = await Native.checkToken(tok);
-                            if (verified.valid && verified.user) {
-                                const u = verified.user;
-                                if (!current.find(a => a.id === u.id)) {
-                                    const av = u.avatar ? `https://cdn.discordapp.com/avatars/${u.id}/${u.avatar}.webp?size=64`
-                                        : `https://cdn.discordapp.com/embed/avatars/${(BigInt(u.id) >> 22n) % 6n}.png`;
-                                    current.push({ id: u.id, token: tok, username: u.global_name || u.username, discriminator: u.discriminator ?? "0", avatar: av });
-                                    added = true;
-                                }
-                            }
-                        }
-                    }
-                    if (added) {
-                        await saveAccounts(current);
-                        await patchTokenStore();
-                    }
-                }
-            } catch (e) { console.error("[TokenImporter] Auto import failed:", e); }
+                await patchTokenStore();
+            } catch (e) { console.error("[TokenImporter] patchTokenStore failed:", e); }
             setTimeout(() => this._injectAccounts(), 5000);
         });
     },
